@@ -1,0 +1,12 @@
+
+Hyperparameter Format:
+  "cell_1_op_1_type" : "StdConv",
+  "cell_1_op_3_arg1" : 4,
+  "cell_1_op_3_input" : 0,
+  "cell_1_output" = "4"
+
+input - 
+
+
+  return operation(x)
+
