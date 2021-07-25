@@ -210,9 +210,11 @@ def main(hyperparameter,budget = 300):
     acc , CM , TP, FP , FN , TN = getConfusionMatrix( model,test_dataloader ,  num_classes  ) 
    
     import seaborn as sns; sns.set_theme()
-    fig = plt.figure(figsize = (19,10))
-    fig = sns.heatmap(CM,annot=True)
-    fig.savefig(OUTPUT_DIR+"TEPS_"+"%.2f" % acc, format = "png", dpi = 1900)
+    fig = plt.figure(figsize = (25,15))
+    fig = sns.heatmap(CM,annot=True,fmt='d',cmap="Blues", cbar_kws={'label': 'Samples'})
+    fig.set(xlabel='Actual Class', ylabel='Predicted Class')
+    fig.set_title("Confusion Matrix", fontdict ={"fontsize": 25, "fontweight": "bold"}, y = 1.05)
+    fig.figure.savefig(OUTPUT_DIR+"/TEPS_"+"%.2f" % acc + ".png", format = "png", dpi = 500)
 
 
  
@@ -223,14 +225,7 @@ def main(hyperparameter,budget = 300):
 
 
 if __name__ == "__main__":
-  hyperparameter =  {'cell_1_num_ops': 1, 'cell_1_ops_1_input': 0, 'cell_1_ops_1_type': 'Conv5', 'cell_1_ops_2_input': 0, 'cell_1_ops_2_type': 'Conv3', 
-  'cell_1_ops_3_input': 2, 'cell_1_ops_3_type': 'StdConv', 'cell_1_ops_4_input': 3, 'cell_1_ops_4_type': 'Conv5', 
-  'cell_1_ops_5_input': 2, 'cell_1_ops_5_type': 'MaxPool', 'channels': 32, 'lr': 0.10137043423136756, 'num_cells': 3, 
- 'window_size': 300, 'cell_2_num_ops': 2, 'cell_2_ops_1_input': 0, 'cell_2_ops_1_type': 'Conv3', 'cell_2_ops_2_input': 1, 
-  'cell_2_ops_2_type': 'Conv5', 'cell_2_ops_3_input': 2, 'cell_2_ops_3_type': 'StdConv', 'cell_2_ops_4_input': 3, 
-  'cell_2_ops_4_type': 'StdConv', 'cell_2_ops_5_input': 0, 'cell_2_ops_5_type': 'Conv3', 'cell_3_num_ops': 4, 
-  'cell_3_ops_1_input': 0, 'cell_3_ops_1_type': 'MaxPool', 'cell_3_ops_2_input': 1, 'cell_3_ops_2_type': 'Conv3', 'cell_3_ops_3_input': 0, 'cell_3_ops_3_type': 'StdConv', 'cell_3_ops_4_input': 1, 'cell_3_ops_4_type': 'Conv5', 'cell_3_ops_5_input': 3, 'cell_3_ops_5_type': 'StdConv'}
+  hyperparameter = {'cell_1_num_ops': 3, 'cell_1_ops_1_input_1': 0, 'cell_1_ops_1_input_2': 0, 'cell_1_ops_1_type': 'Conv3', 'cell_1_ops_2_input_1': 0, 'cell_1_ops_2_input_2': 1, 'cell_1_ops_2_type': 'AvgPool', 'cell_1_ops_3_input_1': 1, 'cell_1_ops_3_input_2': 0, 'cell_1_ops_3_type': 'Conv3', 'cell_1_ops_4_input_1': 0, 'cell_1_ops_4_input_2': 2, 'cell_1_ops_4_type': 'Conv3', 'cell_1_ops_5_input_1': 2, 'cell_1_ops_5_input_2': 1, 'cell_1_ops_5_type': 'StdConv', 'channels': 60, 'lr': 0.0017810101349462824, 'num_cells': 1, 'window_size': 235}
 
-
-  main(hyperparameter,5 )
+  main(hyperparameter,100 )
 
