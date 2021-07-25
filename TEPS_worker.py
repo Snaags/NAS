@@ -86,7 +86,7 @@ def getConfusionMatrix(model,testLoader,n_classes = 2 ,show_image=False):
 
 class TEPS(Dataset):
   def __init__(self, window_size, x : str , y : str ):
-    path = "/home/snaags/scripts/HPO-keras/datasets/TEPS/"
+    path = "datasets/TEPS/"
     self.x = torch.from_numpy(np.reshape(np.load(path+x),(-1,52)))
     self.y = torch.from_numpy(np.load(path+y))
     self.n_samples = self.x.shape[0]
@@ -162,7 +162,7 @@ def main(hyperparameter,budget = 300):
     optimizer = torch.optim.Adam(model.parameters(),lr = hyperparameter["lr"])
     criterion = nn.CrossEntropyLoss()
     acc = 0
-    OUTPUT_DIR = "/home/snaags/scripts/new_project/TEPS"
+    OUTPUT_DIR = "TEPS"
     h = hl.History()
     c = hl.Canvas() 
     #m = hl.build_graph(model, torch.zeros([batch_size,52 ,hyperparameter["window_size"]]).cuda())
@@ -178,7 +178,7 @@ def main(hyperparameter,budget = 300):
         if i == 2: 
          picture = make_dot(outputs.mean(), params=dict(model.named_parameters())    )
          picture.format = "png"
-         picture.render("/home/snaags/Model")
+         picture.render("Model")
 
         # forward + backward + optimize
    
