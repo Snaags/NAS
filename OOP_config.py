@@ -26,7 +26,21 @@ def init_config():
   conv_parameters = [
         ops]
  
-  Cumulative_Integer_Struct(cs,conv_parameters,"cell", "num_cells","Integer", 1, 5).init() 
+  Cumulative_Integer_Struct(cs,conv_parameters,"convcell", "num_conv","Integer", 1, 1).init() 
+
+  conv_ops = ["FactorizedReduce"]
+  
+  ops_parameters = [
+        Parameter("type",               "Categorical", lower_or_constant_value = conv_ops ), 
+        LTP_Parameter("input_1",               "Integer", 0,10),
+        LTP_Parameter("input_2",               "Integer", 0,10)]
+  ops = Cumulative_Integer_Struct(cs,ops_parameters,"ops","num_ops","Integer",1,1)
+
+
+  conv_parameters = [
+        ops]
+ 
+  Cumulative_Integer_Struct(cs,conv_parameters,"reducell", "num_re","Integer", 1, 1).init() 
   """
   ops_type_list = ["StdConv"]
   
@@ -65,12 +79,14 @@ def init_config():
   lr =CSH.UniformFloatHyperparameter(name = "lr",			lower = 1e-8,upper = 5e-1 ,log = True )
   window_size = CSH.UniformIntegerHyperparameter(name = "window_size", lower = 1 ,upper = 400)
   channels = CSH.UniformIntegerHyperparameter(name = "channels", lower = 1 ,upper = 64)
+  layers = CSH.UniformIntegerHyperparameter(name = "layers", lower = 1 ,upper = 5)
     ###Topology Definition]###
 
   hp_list = [
         window_size,
         channels,
-        lr]
+        lr,
+        layers]
   cs.add_hyperparameters(hp_list)
   return cs
 

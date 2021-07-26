@@ -34,11 +34,14 @@ class Model(nn.Module):
 
     return _dictionary
   
-  def build_cells(self, parameters):
-    cell_dictionary = self._build_dict(parameters, "cell")
-    for i in cell_dictionary:
-      self.cells.append(Cell(cell_dictionary[i],self.channels))
-  
+  def build_cells(self, parameters): 
+    conv_dictionary = self._build_dict(parameters, "convcell")
+    redu_dictionary = self._build_dict(parameters, "reducell")
+    for i in range(parameters["layers"]):
+      self.cells.append(Cell(conv_dictionary[1],self.channels))
+      if i != (parameters["layers"] -1):
+        self.cells.append(Cell(redu_dictionary[1],self.channels))
+
 
   def forward(self,x):
     x = self.in_conv(x)

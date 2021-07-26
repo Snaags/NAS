@@ -104,7 +104,7 @@ class FactorizedReduce(nn.Module):
         self.bn = nn.BatchNorm1d(C_out, affine=affine)
 
     def forward(self, x):
-        out = torch.cat([self.conv1(x), self.conv2(x)], dim=1)
+        out = torch.cat([self.conv1(x), self.conv2(x[:,:,1:])], dim=1)
         out = self.bn(out)
         return out
 
