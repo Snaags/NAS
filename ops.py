@@ -89,7 +89,7 @@ class Pool(nn.Module):
     def __init__(self, pool_type, kernel_size, stride = None, padding = 0):
         super().__init__()
         if stride == None:
-          stride = kernel_size
+          stride = 1
         if pool_type.lower() == 'max':
             self.pool = nn.MaxPool2d(kernel_size, stride, padding)
         elif pool_type.lower() == 'avg':
