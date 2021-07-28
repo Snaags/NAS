@@ -1,19 +1,47 @@
 import ops1d as ops
+import random
 #hyperparameter processing
 from operator import itemgetter 
 import torch.nn as nn
-
+import time
+class DataShapeLogger:
+  def __init__(self, filename):
+    self.filename = filename
+    self.log_list = [] 
+    MyFile=open(self.filename+".txt",'a') 
+    MyFile.write(str(time.time()))
+    MyFile.write('\n')
+  def log(self, *string):
+    string = [str(x) for x in string ]
+    out_string = "".join(string)
+    MyFile=open(self.filename+".txt",'a')
+    
+    MyFile.write(out_string)
+    MyFile.write('\n')
+    MyFile.close()
 
 class Model(nn.Module):
   def __init__(self, input_size, output_size, hyperparameters):
     super(Model,self).__init__()
+    self.log_flag = True
+    self.logger = DataShapeLogger("logger.txt")
     self.hyperparameters = hyperparameters  
     self.channels = hyperparameters["channels"]
-    self.cells = nn.ModuleList()
-    self.build_cells(hyperparameters)
+    self.normal_cells = nn.ModuleList()
+    self.reduction_cells = nn.ModuleList()
+    self.p = hyperparameters["p"]
+    self.layers = hyperparameters["layers"]
     self.in_conv = ops.StdConv(input_size[0], self.channels)
+    self.build_cells(hyperparameters)
     self.gap = ops.AdaAvgPool() 
-    self.fc = nn.Linear(self.channels, output_size)
+    self.fc_list = nn.ModuleList()
+    channels = self.channels
+    while channels > 2*output_size:
+      self.fc_list.append(nn.Linear(channels,channels//2))
+      self.fc_list.append(nn.ReLU())
+      channels = channels // 2
+    self.fc = nn.Linear(channels, output_size)
+    self.outact = nn.Softmax(dim = 1)
   def _build_dict(self,parameters : dict, keyword : str):
     _dictionary = dict()
     keyword_length = len(keyword)
@@ -34,34 +62,71 @@ class Model(nn.Module):
 
     return _dictionary
   
-  def build_cells(self, parameters):
-    cell_dictionary = self._build_dict(parameters, "cell")
-    for i in cell_dictionary:
-      self.cells.append(Cell(cell_dictionary[i],self.channels))
+  def build_cells(self, parameters): 
+    conv_dictionary = self._build_dict(parameters, "normal_cell")
+    redu_dictionary = self._build_dict(parameters, "reduction_cell")
+    
+    for i in range(parameters["layers"]):
+         
+      self.normal_cells.append(Cell(conv_dictionary[1],self.channels,self.channels,p = self.p))
+      if i < (self.layers -1):
+        self.reduction_cells.append(Cell(redu_dictionary[1],self.channels,channels_out = self.channels*2, p = self.p))
+        self.channels*=2 
   
-
-  def forward(self,x):
+  def _forward(self,x):
     x = self.in_conv(x)
-    for i in self.cells:
-      x = i(x)
-    #print("Size of x after cells: ", x.size())
+    for i in range(self.layers):
+      x = self.normal_cells[i](x) 
+      if i != (self.layers -1):
+        x = self.reduction_cells[i](x)
     x = self.gap(x)
-    #print("Size of x after gap: ", x.size())
-    #print("Size of dense input: ", self.channels)
-
-    x = self.fc(x.squeeze())
+    x = x.squeeze()
+    for i in self.fc_list:
+      x = i(x)
+    x = self.fc(x)
+    #x = self.outact(x)
     return x  
 
+  def _forward_log(self,x):
+    self.logger.log("Input Size: ", x.size())
+    x = self.in_conv(x)
+    self.logger.log("After in_conv: ", x.size() )
+    for i in range(self.layers):
+      x = self.normal_cells[i](x) 
+      self.logger.log("Data after Normal Cell ", str(i),": ",x.size())
+      if i != (self.layers -1):
+        x = self.reduction_cells[i](x)
+        self.logger.log("Data after Reduction Cell ", str(i),": ",x.size())
+    self.logger.log("Size of x after cells: ", x.size())
+    x = self.gap(x)
+    self.logger.log("Size of x after gap: ", x.size())
+    self.logger.log("Size of dense input: ", self.channels)
+    x = x.squeeze()
+    for i in self.fc_list:
+      x = i(x)
+    x = self.fc(x)
+    x = self.outact(x)
+    return x  
 
+  def forward(self,x):
+    if self.log_flag == True:
+      self.log_flag = False
+      return self._forward_log(x)
+    else:
+      return self._forward(x)
 class Ops(nn.Module):
-  def __init__(self, parameters, channels):
+  def __init__(self, parameters, channels_in,channels_out, p):
     super(Ops,self).__init__()
     self.args = {}
-    self.channels = channels
+    self.channels_in = channels_in
+    self.channels_out = channels_out
     self.multicompute = False
+    self.p = p
     self.input = []
+    self.dropout = nn.Dropout(p = 0.2)
     for i in parameters:
       if i == "type":
+        self.op = parameters[i]
         self.operation = self.get_operation(parameters[i])
       elif i[:-2] == "input":
           if parameters[i] not in self.input:
@@ -72,6 +137,7 @@ class Ops(nn.Module):
     if len(self.input) > 1:
       self.compute.append(ops.StdAdd())
       self.multicompute = True
+      self.pool = nn.AvgPool1d(2)
     self.compute.append(self.operation(**self.args))
   def get_required(self) -> list:
     return self.input
@@ -79,42 +145,54 @@ class Ops(nn.Module):
   def get_operation(self, op_key):
     if op_key == "StdConv":
       operation = ops.StdConv
-      self.args["C_in"] = self.args["C_out"] = self.channels 
+      self.args["C_in"] = self.channels_in 
+      self.args["C_out"] = self.channels_out
+      self.args["padding"] = "same" 
     elif op_key == "Conv3":
       operation = ops.ConvBranch
       self.args["kernel_size"] = 3
       self.args["stride"] = 1
-      self.args["padding"] = 0
+      self.args["padding"] = "same"
       self.args["separable"] = False
-      self.args["C_in"] = self.args["C_out"] = self.channels 
+      self.args["C_in"] = self.channels_in 
+      self.args["C_out"] = self.channels_out
     elif op_key == "Conv5":
       operation = ops.ConvBranch
       self.args["kernel_size"] = 5
       self.args["stride"] = 1
-      self.args["padding"] = 0 
+      self.args["padding"] = "same" 
       self.args["separable"] = False
-      self.args["C_in"] = self.args["C_out"] = self.channels 
+      self.args["C_in"] = self.channels_in 
+      self.args["C_out"] = self.channels_out
     elif op_key == "MaxPool":    
       operation = ops.Pool
       self.args["pool_type"] = "max"
-      self.args["kernel_size"] = 3
+      self.args["kernel_size"] = 5
     elif op_key == "AvgPool":    
       operation = ops.Pool
       self.args["pool_type"] = "avg"
-      self.args["kernel_size"] = 3
+      self.args["kernel_size"] = 5
     elif op_key == "FactorizedReduce":
       operation = ops.FactorizedReduce
-      self.args["C_in"] = self.args["C_out"] = self.channels 
+      self.args["C_in"] = self.channels_in 
+      self.args["C_out"] = self.channels_out
     elif op_key == "":
       operation = ops.StdConv
     return operation
   def forward( self, x ):
-
+    #print(self.op)
     for count,i in enumerate(self.compute):
       if self.multicompute and count == 0:
-        x = i(*x)  
+        #print("Size Before operation: ", x[0].size(),x[1].size())
+        x = i(*x) 
+        #print("Size After operation: ", x.size())
       else:
+        #x = self.dropout(x)
+        #print("Size Before operation: ", x.size())
         x = i(x)
+        #print("Size After operation: ", x.size())
+    if self.multicompute:
+      x = self.pool(x)
     return x 
   
   def process( self, x : list):
@@ -124,11 +202,13 @@ class Cell(nn.Module):
   """
   Contains a series of operations and information links
   """
-  def __init__(self,parameters,channels):
-    super(Cell, self).__init__() 
+  def __init__(self,parameters,channels_in,channels_out,p):
+    super(Cell, self).__init__()
     self.ops_id = [] #numerical identifier for each operation 
     self.ops = []
-    self.channels = channels
+    self.p = p
+    self.channels_in = channels_in
+    self.channels_out = channels_out
     self.inputs = []
     self.output_operation = parameters["num_ops"]
     self.build_ops(parameters)
@@ -157,7 +237,7 @@ class Cell(nn.Module):
     ops_dictionary = self._build_dict(parameters, "op")  
     for i in ops_dictionary:
       
-      self.ops.append(Ops(ops_dictionary[i], self.channels))
+      self.ops.append(Ops(ops_dictionary[i], self.channels_in,self.channels_out, self.p))
       self.ops_id.append(i)
   def calculate_compute_order(self):
     #

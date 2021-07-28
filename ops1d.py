@@ -1,4 +1,4 @@
-
+import math
 import torch
 import torch.nn as nn
 def min_which(a : int, b : int):
@@ -10,10 +10,10 @@ def min_which(a : int, b : int):
     return b, 1
 
 class StdConv(nn.Module):
-    def __init__(self, C_in, C_out):
+    def __init__(self, C_in, C_out,padding = 0):
         super(StdConv, self).__init__()
         self.conv = nn.Sequential(
-            nn.Conv1d(C_in, C_out, 1, stride=1, padding=0, bias=False),
+            nn.Conv1d(C_in, C_out, 1, stride=1, padding=padding, bias=False),
             nn.BatchNorm1d(C_out, affine=False),
             nn.ReLU()
         )
@@ -79,6 +79,7 @@ class SeparableConv(nn.Module):
 class ConvBranch(nn.Module):
     def __init__(self, C_in, C_out, kernel_size, stride, padding, separable):
         super(ConvBranch, self).__init__()
+        print(C_in)
         self.preproc = StdConv(C_in, C_out)
         if separable:
             self.conv = SeparableConv(C_out, C_out, kernel_size, stride, padding)
@@ -100,11 +101,11 @@ class FactorizedReduce(nn.Module):
     def __init__(self, C_in, C_out, affine=False):
         super().__init__()
         self.conv1 = nn.Conv1d(C_in, C_out // 2, 1, stride=2, padding=0, bias=False)
-        self.conv2 = nn.Conv1d(C_in, C_out // 2, 1, stride=2, padding=0, bias=False)
+        self.conv2 = nn.Conv1d(C_in, math.ceil(C_out / 2), 1, stride=2, padding=0, bias=False)
         self.bn = nn.BatchNorm1d(C_out, affine=affine)
 
     def forward(self, x):
-        out = torch.cat([self.conv1(x), self.conv2(x)], dim=1)
+        out = torch.cat([self.conv1(x), self.conv2(x[:,:,:])], dim=1)
         out = self.bn(out)
         return out
 
@@ -113,11 +114,12 @@ class Pool(nn.Module):
     def __init__(self, pool_type, kernel_size, stride = None, padding = 0):
         super().__init__()
         if stride == None:
-          stride = kernel_size
+          stride = 1
+           
         if pool_type.lower() == 'max':
-            self.pool = nn.MaxPool1d(kernel_size, stride, padding)
+            self.pool = nn.MaxPool1d(kernel_size, stride, padding = 2, ceil_mode = True)
         elif pool_type.lower() == 'avg':
-            self.pool = nn.AvgPool1d(kernel_size, stride, padding, count_include_pad=False)
+            self.pool = nn.AvgPool1d(kernel_size, stride, padding = 2, count_include_pad=False,ceil_mode= True)
         else:
             raise ValueError()
 
@@ -156,7 +158,7 @@ class DropPath(nn.Module):
         if self.training and self.p > 0.:
             keep_prob = 1. - self.p
             # per data point mask
-            mask = torch.zeros((x.size(0), 1, 1, 1), device=x.device).bernoulli_(keep_prob)
+            mask = torch.zeros((x.size(0), 1, 1), device=x.device).bernoulli_(keep_prob)
             return x / keep_prob * mask
 
         return x

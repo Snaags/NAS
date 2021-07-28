@@ -239,7 +239,6 @@ def wrapper(hyperparameters):
     return 0
 
 if __name__ == "__main__":
-  hyperparameter = {'cell_1_num_ops': 3, 'cell_1_ops_1_input_1': 0, 'cell_1_ops_1_input_2': 0, 'cell_1_ops_1_type': 'Conv3', 'cell_1_ops_2_input_1': 0, 'cell_1_ops_2_input_2': 1, 'cell_1_ops_2_type': 'AvgPool', 'cell_1_ops_3_input_1': 1, 'cell_1_ops_3_input_2': 0, 'cell_1_ops_3_type': 'Conv3', 'cell_1_ops_4_input_1': 0, 'cell_1_ops_4_input_2': 2, 'cell_1_ops_4_type': 'Conv3', 'cell_1_ops_5_input_1': 2, 'cell_1_ops_5_input_2': 1, 'cell_1_ops_5_type': 'StdConv', 'channels': 60, 'lr': 0.0017810101349462824, 'num_cells': 1, 'window_size': 235}
-
-  main(hyperparameter,100 )
+  hyperparameter = {'channels': 64, 'normal_cell_1_num_ops': 5, 'normal_cell_1_ops_1_input_1': 0, 'normal_cell_1_ops_1_input_2': 0, 'normal_cell_1_ops_1_type': 'Conv5', 'normal_cell_1_ops_2_input_1': 1, 'normal_cell_1_ops_2_input_2': 1, 'normal_cell_1_ops_2_type': 'StdConv', 'normal_cell_1_ops_3_input_1': 2, 'normal_cell_1_ops_3_input_2': 0, 'normal_cell_1_ops_3_type': 'AvgPool', 'normal_cell_1_ops_4_input_1': 2, 'normal_cell_1_ops_4_input_2': 2, 'normal_cell_1_ops_4_type': 'MaxPool', 'normal_cell_1_ops_5_input_1': 4, 'normal_cell_1_ops_5_input_2': 2, 'normal_cell_1_ops_5_type': 'StdConv', 'layers': 3, 'lr': 0.010326044660341144, 'num_conv': 1, 'num_re': 1, 'reduction_cell_1_num_ops': 1, 'reduction_cell_1_ops_1_input_1': 0, 'reduction_cell_1_ops_1_input_2': 0, 'reduction_cell_1_ops_1_type': 'FactorizedReduce', 'window_size': 525, "p": 0.2,"layers" : 3}
+  main(hyperparameter,2000 )
 
