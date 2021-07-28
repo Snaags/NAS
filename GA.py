@@ -39,7 +39,7 @@ def save2csv(filename : str, dictionary :dict, first = False,iter_num : int = 0)
 w = MyWorker(sleep_interval = 0, nameserver='127.0.0.1',run_id='example1')
 configspace = w.get_configspace()
 ###Configuration Settings###
-pop_size = 50
+pop_size = 2
 elite_size = 0.2
 num_iter = 20
 

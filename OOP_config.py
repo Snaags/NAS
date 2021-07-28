@@ -20,7 +20,7 @@ def init_config():
         Parameter("type",               "Categorical", lower_or_constant_value = conv_ops ), 
         LTP_Parameter("input_1",               "Integer", 0,10),
         LTP_Parameter("input_2",               "Integer", 0,10)]
-  ops = Cumulative_Integer_Struct(cs,ops_parameters,"ops","num_ops","Integer",1,9)
+  ops = Cumulative_Integer_Struct(cs,ops_parameters,"ops","num_ops","Integer",1,6)
 
 
   conv_parameters = [
@@ -80,7 +80,7 @@ def init_config():
   p =CSH.Constant(name = "p",			value = 0.05 )
   window_size = CSH.UniformIntegerHyperparameter(name = "window_size", lower = 1 ,upper = 400)
   channels = CSH.UniformIntegerHyperparameter(name = "channels", lower = 1 ,upper = 64)
-  layers = CSH.UniformIntegerHyperparameter(name = "layers", lower = 3 ,upper = 10)
+  layers = CSH.UniformIntegerHyperparameter(name = "layers", lower = 3 ,upper = 5)
     ###Topology Definition]###
 
   hp_list = [

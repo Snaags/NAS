@@ -1,4 +1,4 @@
-
+import math
 import torch
 import torch.nn as nn
 def min_which(a : int, b : int):
@@ -79,6 +79,7 @@ class SeparableConv(nn.Module):
 class ConvBranch(nn.Module):
     def __init__(self, C_in, C_out, kernel_size, stride, padding, separable):
         super(ConvBranch, self).__init__()
+        print(C_in)
         self.preproc = StdConv(C_in, C_out)
         if separable:
             self.conv = SeparableConv(C_out, C_out, kernel_size, stride, padding)
@@ -100,8 +101,8 @@ class FactorizedReduce(nn.Module):
     def __init__(self, C_in, C_out, affine=False):
         super().__init__()
         self.conv1 = nn.Conv1d(C_in, C_out // 2, 1, stride=2, padding=0, bias=False)
-        self.conv2 = nn.Conv1d(C_in, C_out // 2, 1, stride=2, padding=0, bias=False)
-        self.bn = nn.BatchNorm1d(int(C_out/2)*2, affine=affine)
+        self.conv2 = nn.Conv1d(C_in, math.ceil(C_out / 2), 1, stride=2, padding=0, bias=False)
+        self.bn = nn.BatchNorm1d(C_out, affine=affine)
 
     def forward(self, x):
         out = torch.cat([self.conv1(x), self.conv2(x[:,:,:])], dim=1)

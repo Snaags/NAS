@@ -121,7 +121,7 @@ class Test_TEPS(TEPS):
     
 
 def main(hyperparameter,budget = 2000):
-    VISUAL_MODE = True
+    VISUAL_MODE = False
     def cal_acc(y,t):
         return np.count_nonzero(y==t)/len(y)
     def convert_label_max_only(y):
@@ -225,6 +225,6 @@ def main(hyperparameter,budget = 2000):
 
 
 if __name__ == "__main__":
-  hyperparameter = {'channels': 36, 'layers': 4, 'lr': 0.00017257004865709992, 'normal_cell_1_num_ops': 1, 'normal_cell_1_ops_1_input_1': 0, 'normal_cell_1_ops_1_input_2': 0, 'normal_cell_1_ops_1_type': 'Conv3', 'normal_cell_1_ops_2_input_1': 1, 'normal_cell_1_ops_2_input_2': 0, 'normal_cell_1_ops_2_type': 'Conv3', 'normal_cell_1_ops_3_input_1': 2, 'normal_cell_1_ops_3_input_2': 2, 'normal_cell_1_ops_3_type': 'Conv3', 'normal_cell_1_ops_4_input_1': 1, 'normal_cell_1_ops_4_input_2': 3, 'normal_cell_1_ops_4_type': 'Conv3', 'normal_cell_1_ops_5_input_1': 2, 'normal_cell_1_ops_5_input_2': 1, 'normal_cell_1_ops_5_type': 'Conv5', 'normal_cell_1_ops_6_input_1': 5, 'normal_cell_1_ops_6_input_2': 5, 'normal_cell_1_ops_6_type': 'Conv5', 'normal_cell_1_ops_7_input_1': 3, 'normal_cell_1_ops_7_input_2': 5, 'normal_cell_1_ops_7_type': 'AvgPool', 'normal_cell_1_ops_8_input_1': 2, 'normal_cell_1_ops_8_input_2': 1, 'normal_cell_1_ops_8_type': 'Conv5', 'normal_cell_1_ops_9_input_1': 6, 'normal_cell_1_ops_9_input_2': 3, 'normal_cell_1_ops_9_type': 'MaxPool', 'num_conv': 1, 'num_re': 1, 'p': 0.05, 'reduction_cell_1_num_ops': 1, 'reduction_cell_1_ops_1_input_1': 0, 'reduction_cell_1_ops_1_input_2': 0, 'reduction_cell_1_ops_1_type': 'FactorizedReduce', 'window_size': 134}
-  main(hyperparameter,5000 )
+  hyperparameter = {'channels': 64, 'normal_cell_1_num_ops': 5, 'normal_cell_1_ops_1_input_1': 0, 'normal_cell_1_ops_1_input_2': 0, 'normal_cell_1_ops_1_type': 'Conv5', 'normal_cell_1_ops_2_input_1': 1, 'normal_cell_1_ops_2_input_2': 1, 'normal_cell_1_ops_2_type': 'StdConv', 'normal_cell_1_ops_3_input_1': 2, 'normal_cell_1_ops_3_input_2': 0, 'normal_cell_1_ops_3_type': 'AvgPool', 'normal_cell_1_ops_4_input_1': 2, 'normal_cell_1_ops_4_input_2': 2, 'normal_cell_1_ops_4_type': 'MaxPool', 'normal_cell_1_ops_5_input_1': 4, 'normal_cell_1_ops_5_input_2': 2, 'normal_cell_1_ops_5_type': 'StdConv', 'layers': 3, 'lr': 0.010326044660341144, 'num_conv': 1, 'num_re': 1, 'reduction_cell_1_num_ops': 1, 'reduction_cell_1_ops_1_input_1': 0, 'reduction_cell_1_ops_1_input_2': 0, 'reduction_cell_1_ops_1_type': 'FactorizedReduce', 'window_size': 525, "p": 0.2,"layers" : 3}
+  main(hyperparameter,2000 )
 

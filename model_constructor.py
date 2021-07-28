@@ -3,20 +3,21 @@ import random
 #hyperparameter processing
 from operator import itemgetter 
 import torch.nn as nn
-
+import time
 class DataShapeLogger:
   def __init__(self, filename):
     self.filename = filename
     self.log_list = [] 
+    MyFile=open(self.filename+".txt",'a') 
+    MyFile.write(str(time.time()))
+    MyFile.write('\n')
   def log(self, *string):
     string = [str(x) for x in string ]
-    self.log_list.append("".join(string))
-  def write(self):   
-    MyFile=open(self.filename+".txt",'w')
+    out_string = "".join(string)
+    MyFile=open(self.filename+".txt",'a')
     
-    for element in self.log_list:
-         MyFile.write(element)
-         MyFile.write('\n')
+    MyFile.write(out_string)
+    MyFile.write('\n')
     MyFile.close()
 
 class Model(nn.Module):
@@ -26,13 +27,21 @@ class Model(nn.Module):
     self.logger = DataShapeLogger("logger.txt")
     self.hyperparameters = hyperparameters  
     self.channels = hyperparameters["channels"]
+    self.normal_cells = nn.ModuleList()
+    self.reduction_cells = nn.ModuleList()
     self.p = hyperparameters["p"]
-    self.build_cells(hyperparameters)
-    self.in_conv = ops.StdConv(input_size[0], self.channels)
     self.layers = hyperparameters["layers"]
+    self.in_conv = ops.StdConv(input_size[0], self.channels)
+    self.build_cells(hyperparameters)
     self.gap = ops.AdaAvgPool() 
-    self.fc = nn.Linear(self.channels, output_size)
-    self.fcact = nn.Softmax(dim = 1)
+    self.fc_list = nn.ModuleList()
+    channels = self.channels
+    while channels > 2*output_size:
+      self.fc_list.append(nn.Linear(channels,channels//2))
+      self.fc_list.append(nn.ReLU())
+      channels = channels // 2
+    self.fc = nn.Linear(channels, output_size)
+    self.outact = nn.Softmax(dim = 1)
   def _build_dict(self,parameters : dict, keyword : str):
     _dictionary = dict()
     keyword_length = len(keyword)
@@ -56,18 +65,26 @@ class Model(nn.Module):
   def build_cells(self, parameters): 
     conv_dictionary = self._build_dict(parameters, "normal_cell")
     redu_dictionary = self._build_dict(parameters, "reduction_cell")
-    self.cellsconv = Cell(conv_dictionary[1],self.channels,self.p)
-    self.cellsredu = Cell(redu_dictionary[1],self.channels,self.p)
+    
+    for i in range(parameters["layers"]):
+         
+      self.normal_cells.append(Cell(conv_dictionary[1],self.channels,self.channels,p = self.p))
+      if i < (self.layers -1):
+        self.reduction_cells.append(Cell(redu_dictionary[1],self.channels,channels_out = self.channels*2, p = self.p))
+        self.channels*=2 
   
   def _forward(self,x):
     x = self.in_conv(x)
     for i in range(self.layers):
-      x = self.cellsconv(x) 
+      x = self.normal_cells[i](x) 
       if i != (self.layers -1):
-        x = self.cellsredu(x)
+        x = self.reduction_cells[i](x)
     x = self.gap(x)
-    x = self.fc(x.squeeze())
-    x = self.fcact(x)
+    x = x.squeeze()
+    for i in self.fc_list:
+      x = i(x)
+    x = self.fc(x)
+    #x = self.outact(x)
     return x  
 
   def _forward_log(self,x):
@@ -75,18 +92,20 @@ class Model(nn.Module):
     x = self.in_conv(x)
     self.logger.log("After in_conv: ", x.size() )
     for i in range(self.layers):
-      x = self.cellsconv(x) 
+      x = self.normal_cells[i](x) 
       self.logger.log("Data after Normal Cell ", str(i),": ",x.size())
       if i != (self.layers -1):
-        x = self.cellsredu(x)
+        x = self.reduction_cells[i](x)
         self.logger.log("Data after Reduction Cell ", str(i),": ",x.size())
     self.logger.log("Size of x after cells: ", x.size())
     x = self.gap(x)
     self.logger.log("Size of x after gap: ", x.size())
     self.logger.log("Size of dense input: ", self.channels)
-    x = self.fc(x.squeeze())
-    x = self.fcact(x)
-    self.logger.write()
+    x = x.squeeze()
+    for i in self.fc_list:
+      x = i(x)
+    x = self.fc(x)
+    x = self.outact(x)
     return x  
 
   def forward(self,x):
@@ -96,10 +115,11 @@ class Model(nn.Module):
     else:
       return self._forward(x)
 class Ops(nn.Module):
-  def __init__(self, parameters, channels, p):
+  def __init__(self, parameters, channels_in,channels_out, p):
     super(Ops,self).__init__()
     self.args = {}
-    self.channels = channels
+    self.channels_in = channels_in
+    self.channels_out = channels_out
     self.multicompute = False
     self.p = p
     self.input = []
@@ -125,7 +145,8 @@ class Ops(nn.Module):
   def get_operation(self, op_key):
     if op_key == "StdConv":
       operation = ops.StdConv
-      self.args["C_in"] = self.args["C_out"] = self.channels
+      self.args["C_in"] = self.channels_in 
+      self.args["C_out"] = self.channels_out
       self.args["padding"] = "same" 
     elif op_key == "Conv3":
       operation = ops.ConvBranch
@@ -133,14 +154,16 @@ class Ops(nn.Module):
       self.args["stride"] = 1
       self.args["padding"] = "same"
       self.args["separable"] = False
-      self.args["C_in"] = self.args["C_out"] = self.channels 
+      self.args["C_in"] = self.channels_in 
+      self.args["C_out"] = self.channels_out
     elif op_key == "Conv5":
       operation = ops.ConvBranch
       self.args["kernel_size"] = 5
       self.args["stride"] = 1
       self.args["padding"] = "same" 
       self.args["separable"] = False
-      self.args["C_in"] = self.args["C_out"] = self.channels 
+      self.args["C_in"] = self.channels_in 
+      self.args["C_out"] = self.channels_out
     elif op_key == "MaxPool":    
       operation = ops.Pool
       self.args["pool_type"] = "max"
@@ -151,7 +174,8 @@ class Ops(nn.Module):
       self.args["kernel_size"] = 5
     elif op_key == "FactorizedReduce":
       operation = ops.FactorizedReduce
-      self.args["C_in"] = self.args["C_out"] = self.channels 
+      self.args["C_in"] = self.channels_in 
+      self.args["C_out"] = self.channels_out
     elif op_key == "":
       operation = ops.StdConv
     return operation
@@ -163,7 +187,7 @@ class Ops(nn.Module):
         x = i(*x) 
         #print("Size After operation: ", x.size())
       else:
-        x = self.dropout(x)
+        #x = self.dropout(x)
         #print("Size Before operation: ", x.size())
         x = i(x)
         #print("Size After operation: ", x.size())
@@ -178,12 +202,13 @@ class Cell(nn.Module):
   """
   Contains a series of operations and information links
   """
-  def __init__(self,parameters,channels,p):
-    super(Cell, self).__init__() 
+  def __init__(self,parameters,channels_in,channels_out,p):
+    super(Cell, self).__init__()
     self.ops_id = [] #numerical identifier for each operation 
     self.ops = []
     self.p = p
-    self.channels = channels
+    self.channels_in = channels_in
+    self.channels_out = channels_out
     self.inputs = []
     self.output_operation = parameters["num_ops"]
     self.build_ops(parameters)
@@ -212,7 +237,7 @@ class Cell(nn.Module):
     ops_dictionary = self._build_dict(parameters, "op")  
     for i in ops_dictionary:
       
-      self.ops.append(Ops(ops_dictionary[i], self.channels, self.p))
+      self.ops.append(Ops(ops_dictionary[i], self.channels_in,self.channels_out, self.p))
       self.ops_id.append(i)
   def calculate_compute_order(self):
     #
