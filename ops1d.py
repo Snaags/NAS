@@ -79,7 +79,6 @@ class SeparableConv(nn.Module):
 class ConvBranch(nn.Module):
     def __init__(self, C_in, C_out, kernel_size, stride, padding, separable):
         super(ConvBranch, self).__init__()
-        print(C_in)
         self.preproc = StdConv(C_in, C_out)
         if separable:
             self.conv = SeparableConv(C_out, C_out, kernel_size, stride, padding)
@@ -117,9 +116,9 @@ class Pool(nn.Module):
           stride = 1
            
         if pool_type.lower() == 'max':
-            self.pool = nn.MaxPool1d(kernel_size, stride, padding = 2, ceil_mode = True)
+            self.pool = nn.MaxPool1d(kernel_size, stride, padding = padding, ceil_mode = True)
         elif pool_type.lower() == 'avg':
-            self.pool = nn.AvgPool1d(kernel_size, stride, padding = 2, count_include_pad=False,ceil_mode= True)
+            self.pool = nn.AvgPool1d(kernel_size, stride, padding = padding, count_include_pad=False,ceil_mode= True)
         else:
             raise ValueError()
 

@@ -14,7 +14,7 @@ def init_config():
 
   cs = CS.ConfigurationSpace()
 
-  conv_ops = ["StdConv", "Conv3", "Conv5","MaxPool","AvgPool"]
+  conv_ops = ["StdConv", "Conv3", "Conv5","Conv7","MaxPool5","AvgPool5","MaxPool7","AvgPool7","SepConv3","SepConv5","SepConv7"]
   
   ops_parameters = [
         Parameter("type",               "Categorical", lower_or_constant_value = conv_ops ), 
@@ -76,11 +76,11 @@ def init_config():
   """
     ###Training Configuration###
     ###Optimiser###
-  lr =CSH.UniformFloatHyperparameter(name = "lr",			lower = 1e-8,upper = 5e-1 ,log = True )
+  lr =CSH.Constant(name = "lr",			value = 0.001)
   p =CSH.Constant(name = "p",			value = 0.05 )
-  window_size = CSH.UniformIntegerHyperparameter(name = "window_size", lower = 1 ,upper = 400)
-  channels = CSH.UniformIntegerHyperparameter(name = "channels", lower = 1 ,upper = 64)
-  layers = CSH.UniformIntegerHyperparameter(name = "layers", lower = 3 ,upper = 5)
+  window_size = CSH.Constant(name = "window_size", value = 200)
+  channels = CSH.UniformIntegerHyperparameter(name = "channels", lower = 1 ,upper = 52)
+  layers = CSH.Constant(name = "layers", value = 4)
     ###Topology Definition]###
 
   hp_list = [

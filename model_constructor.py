@@ -148,6 +148,30 @@ class Ops(nn.Module):
       self.args["C_in"] = self.channels_in 
       self.args["C_out"] = self.channels_out
       self.args["padding"] = "same" 
+    elif op_key == "SepConv3":
+      operation = ops.ConvBranch
+      self.args["kernel_size"] = 3
+      self.args["stride"] = 1
+      self.args["padding"] = "same"
+      self.args["separable"] = True
+      self.args["C_in"] = self.channels_in 
+      self.args["C_out"] = self.channels_out
+    elif op_key == "SepConv5":
+      operation = ops.ConvBranch
+      self.args["kernel_size"] = 5
+      self.args["stride"] = 1
+      self.args["padding"] = "same" 
+      self.args["separable"] = True
+      self.args["C_in"] = self.channels_in 
+      self.args["C_out"] = self.channels_out
+    elif op_key == "SepConv7":
+      operation = ops.ConvBranch
+      self.args["kernel_size"] = 7
+      self.args["stride"] = 1
+      self.args["padding"] = "same" 
+      self.args["separable"] = True
+      self.args["C_in"] = self.channels_in 
+      self.args["C_out"] = self.channels_out
     elif op_key == "Conv3":
       operation = ops.ConvBranch
       self.args["kernel_size"] = 3
@@ -164,14 +188,34 @@ class Ops(nn.Module):
       self.args["separable"] = False
       self.args["C_in"] = self.channels_in 
       self.args["C_out"] = self.channels_out
-    elif op_key == "MaxPool":    
+    elif op_key == "Conv7":
+      operation = ops.ConvBranch
+      self.args["kernel_size"] = 7
+      self.args["stride"] = 1
+      self.args["padding"] = "same" 
+      self.args["separable"] = False
+      self.args["C_in"] = self.channels_in 
+      self.args["C_out"] = self.channels_out
+    elif op_key == "MaxPool5":    
       operation = ops.Pool
       self.args["pool_type"] = "max"
       self.args["kernel_size"] = 5
-    elif op_key == "AvgPool":    
+      self.args["padding"] = 2
+    elif op_key == "MaxPool7":    
+      operation = ops.Pool
+      self.args["pool_type"] = "max"
+      self.args["kernel_size"] = 7
+      self.args["padding"] = 3
+    elif op_key == "AvgPool5":    
       operation = ops.Pool
       self.args["pool_type"] = "avg"
       self.args["kernel_size"] = 5
+      self.args["padding"] = 2
+    elif op_key == "AvgPool7":    
+      operation = ops.Pool
+      self.args["pool_type"] = "avg"
+      self.args["kernel_size"] = 7
+      self.args["padding"] = 3
     elif op_key == "FactorizedReduce":
       operation = ops.FactorizedReduce
       self.args["C_in"] = self.channels_in 

@@ -14,7 +14,7 @@ from hpbandster.optimizers import RandomSearch as RandomSearch
 from worker_hp_TEPS import MyWorker
 from algorithms import GA
 from multiprocessing import Pool
-from TEPS_worker import wrapper as train_function
+from TEPS_worker import main as train_function
 def dict_loop(dict_, list_):
     for ID, config in enumerate(list_):
         dict_[ID] = config
@@ -57,7 +57,7 @@ for count,i in enumerate(range(num_iter)):
     pop = []
     for i in population:
         pop.append(i.get_dictionary())
-    with Pool(processes = 8) as pool:
+    with Pool(processes = 1) as pool:
         results = pool.map(train_function, pop)
         pool.close()
         pool.join()
