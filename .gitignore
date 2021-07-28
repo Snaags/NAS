@@ -1,5 +1,6 @@
 datasets/
 logs/
+__pycache__/
 *.pt
 *.csv
 *.png

@@ -20,7 +20,7 @@ def init_config():
         Parameter("type",               "Categorical", lower_or_constant_value = conv_ops ), 
         LTP_Parameter("input_1",               "Integer", 0,10),
         LTP_Parameter("input_2",               "Integer", 0,10)]
-  ops = Cumulative_Integer_Struct(cs,ops_parameters,"ops","num_ops","Integer",1,6)
+  ops = Cumulative_Integer_Struct(cs,ops_parameters,"ops","num_ops","Integer",1,8)
 
 
   conv_parameters = [
