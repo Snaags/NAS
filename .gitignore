@@ -2,4 +2,7 @@ datasets
 *.npy
 TEPS/
 ford/
-
+model
+Model
+*.png
+*.csv
