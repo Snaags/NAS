@@ -1,8 +1,10 @@
-datasets
+datasets/
 *.npy
 TEPS/
 ford/
-model
+*.onnx
+*.pt
+model.pt
 Model
 *.png
 *.csv
