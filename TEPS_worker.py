@@ -1,4 +1,5 @@
 import numpy as np 
+import time
 import os 
 from torchviz import make_dot
 import matplotlib
@@ -118,9 +119,18 @@ class Train_TEPS(TEPS):
 class Test_TEPS(TEPS):
   def __init__(self, window_size): 
     super().__init__(window_size, "x_test.npy","y_test.npy")
-    
 
-def main(hyperparameter,budget = 2000):
+def alloc_gpu(): 
+    gpu_mem_free = []
+    for i in range(torch.cuda.device_count()):
+      r = torch.cuda.memory_reserved(i)
+      t = torch.cuda.get_device_properties(i).total_memory
+      gpu_mem_free.append( t-r )
+    torch.cuda.set_device(gpu_mem_free.index(max(gpu_mem_free)))
+
+def main(hyperparameter,budget = 5000):
+    time.sleep(random.randint(0,10))
+    alloc_gpu() 
     VISUAL_MODE = False
     def cal_acc(y,t):
         return np.count_nonzero(y==t)/len(y)
@@ -142,13 +152,12 @@ def main(hyperparameter,budget = 2000):
     test_dataloader = torch.utils.data.DataLoader(test_dataset, batch_size=batch_size,shuffle = True, 
                                      drop_last=True,pin_memory=True 
                                      )
-    print(test_dataset[0])
 
     num_classes = train_dataset.get_n_classes()
     print("Currently Running Hyperparameter Set: ", hyperparameter)
     print("Training classes: ",num_classes)
     #print(hyperparameter)
-    model = Model(input_size = train_dataset.x.shape[1:] ,output_size = num_classes,hyperparameters = hyperparameter) 
+    model = Model(input_size = train_dataset.x.shape[1:] ,output_size = num_classes,hyperparameters = hyperparameter)
     model = model.cuda()
     """
     ## Train the model
@@ -223,6 +232,11 @@ def main(hyperparameter,budget = 2000):
 
     return acc 
 
+def wrapper(hyperparameters):
+  try:
+    return main(hyperparameters)
+  except:
+    return 0
 
 if __name__ == "__main__":
   hyperparameter = {'channels': 64, 'normal_cell_1_num_ops': 5, 'normal_cell_1_ops_1_input_1': 0, 'normal_cell_1_ops_1_input_2': 0, 'normal_cell_1_ops_1_type': 'Conv5', 'normal_cell_1_ops_2_input_1': 1, 'normal_cell_1_ops_2_input_2': 1, 'normal_cell_1_ops_2_type': 'StdConv', 'normal_cell_1_ops_3_input_1': 2, 'normal_cell_1_ops_3_input_2': 0, 'normal_cell_1_ops_3_type': 'AvgPool', 'normal_cell_1_ops_4_input_1': 2, 'normal_cell_1_ops_4_input_2': 2, 'normal_cell_1_ops_4_type': 'MaxPool', 'normal_cell_1_ops_5_input_1': 4, 'normal_cell_1_ops_5_input_2': 2, 'normal_cell_1_ops_5_type': 'StdConv', 'layers': 3, 'lr': 0.010326044660341144, 'num_conv': 1, 'num_re': 1, 'reduction_cell_1_num_ops': 1, 'reduction_cell_1_ops_1_input_1': 0, 'reduction_cell_1_ops_1_input_2': 0, 'reduction_cell_1_ops_1_type': 'FactorizedReduce', 'window_size': 525, "p": 0.2,"layers" : 3}

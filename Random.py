@@ -39,14 +39,13 @@ def save2csv(filename : str, dictionary :dict, first = False,iter_num : int = 0)
 w = MyWorker(sleep_interval = 0, nameserver='127.0.0.1',run_id='example1')
 configspace = w.get_configspace()
 ###Configuration Settings###
-pop_size = 2
+pop_size = 100
 elite_size = 0.2
-num_iter = 20
+num_iter = 5
 
 
-ga = GA(pop_size, elite_size)
-population = configspace.sample_configuration(pop_size)
 pop_dict = dict()
+population = configspace.sample_configuration(pop_size)
 score_dict = dict()
 pop_dict = dict_loop(pop_dict, population) 
 
@@ -58,19 +57,17 @@ for count,i in enumerate(range(num_iter)):
     pop = []
     for i in population:
         pop.append(i.get_dictionary())
-    with Pool(processes = 4) as pool:
+    with Pool(processes = 8) as pool:
         results = pool.map(train_function, pop)
         pool.close()
         pool.join()
     scores = []
     for i in results:
-        scores.append(i[0])
+        scores.append(i)
     score_dict = dict_loop(score_dict, scores) 
     save2csv(config_file, pop_dict,first,count)  
     save2csv(score_file, score_dict,first,count)  
-    population = ga.mutate(pop_dict, score_dict)
+    population = configspace.sample_configuration(pop_size)
     pop_dict = dict_loop(pop_dict, population) 
     first = False 
-    for i in os.listdir("models"):
-        os.remove("models/"+str(i))
                  

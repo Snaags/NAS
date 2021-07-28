@@ -13,9 +13,11 @@ from worker_hp_TEPS import MyWorker
 
 
 parser = argparse.ArgumentParser(description='Example 1 - sequential and local execution.')
-parser.add_argument('--min_budget',   type=float, help='Minimum budget used during the optimization.',    default=300)
-parser.add_argument('--max_budget',   type=float, help='Maximum budget used during the optimization.',    default=2000)
-parser.add_argument('--n_iterations', type=int,   help='Number of iterations performed by the optimizer', default=200)
+parser.add_argument('--min_budget',   type=float, help='Minimum budget used during the optimization.',    default=1000)
+parser.add_argument('--max_budget',   type=float, help='Maximum budget used during the optimization.',    default=7000)
+parser.add_argument('--n_iterations', type=int,   help='Number of iterations performed by the optimizer', default=500)
+parser.add_argument('--n_workers', type=int,   help='Number of workers to run in parallel.', default=4)
+parser.add_argument('--worker', help='Flag to turn this into a worker process', default=True,  action='store_true')
 args=parser.parse_args()
 
 
@@ -32,8 +34,11 @@ NS.start()
 # Besides the sleep_interval, we need to define the nameserver information and
 # the same run_id as above. After that, we can start the worker in the background,
 # where it will wait for incoming configurations to evaluate.
-w = MyWorker(sleep_interval = 0, nameserver='127.0.0.1',run_id='example1')
-w.run(background=True)
+if True:
+    w = MyWorker(sleep_interval = 0, nameserver='127.0.0.1',run_id='example1')
+    w.run(background=True)
+
+
 
 # Step 3: Run an optimizer
 # Now we can create an optimizer object and start the run.
@@ -42,13 +47,13 @@ w.run(background=True)
 import hpbandster.core.result as hpres
 result_logger = hpres.json_result_logger(directory="logs", overwrite=True)
 
-Random = BOHB(  configspace = w.get_configspace(),
+bohb = BOHB(  configspace = w.get_configspace(),
               run_id = 'example1', nameserver='127.0.0.1',
               min_budget=args.min_budget, max_budget=args.max_budget,
               result_logger = result_logger
 
            )
-res = Random.run(n_iterations=args.n_iterations)
+res = bohb.run(n_iterations=args.n_iterations, min_n_workers = args.n_workers)
 
 # Step 4: Shutdown
 # After the optimizer run, we must shutdown the master and the nameserver.

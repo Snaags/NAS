@@ -1,5 +1,13 @@
-datasets
+datasets/
+logs/
+*.pt
+*.csv
+*.png
+model
+*.onnx
 *.npy
 TEPS/
 ford/
-
+model.png
+*png
+Model
