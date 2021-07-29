@@ -12,6 +12,8 @@ class TEPS(Dataset):
     self.window = window_size
     self.n_classes = len(np.unique(self.y))
 
+  def set_window_size(self, window_size):
+    self.window = window_size
   def __getitem__(self, index):
     while index+self.window > self.n_samples:
       index = random.randint(0,self.n_samples)
@@ -31,9 +33,9 @@ class TEPS(Dataset):
 
 class Train_TEPS(TEPS):
 
-  def __init__(self, window_size): 
+  def __init__(self, window_size = 200): 
     super().__init__(window_size, "x_train.npy","y_train.npy")
 
 class Test_TEPS(TEPS):
-  def __init__(self, window_size): 
+  def __init__(self, window_size = 200): 
     super().__init__(window_size, "x_test.npy","y_test.npy")

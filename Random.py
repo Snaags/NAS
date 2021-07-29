@@ -5,7 +5,7 @@ import logging
 logging.basicConfig(level=logging.WARNING)
 
 import argparse
-
+import torch
 import hpbandster.core.nameserver as hpns
 import hpbandster.core.result as hpres
 from datasets import Train_TEPS, Test_TEPS
@@ -39,18 +39,15 @@ def save2csv(filename : str, dictionary :dict, first = False,iter_num : int = 0)
 w = MyWorker(sleep_interval = 0, nameserver='127.0.0.1',run_id='example1')
 configspace = w.get_configspace()
 ###Configuration Settings###
-pop_size = 100
+pop_size = 36
 elite_size = 0.2
 num_iter = 5
 batch_size = 256
-train_dataset = Train_TEPS(200)
-train_dataloader = torch.utils.data.DataLoader(train_dataset, batch_size=batch_size,
-    shuffle = True,drop_last=True,pin_memory=True)
 
-test_dataset = Test_TEPS(200)
-test_dataloader = torch.utils.data.DataLoader(test_dataset, batch_size=batch_size,shuffle = True, 
-                                     drop_last=True,pin_memory=True 
-                                     )
+
+train_dataset = Train_TEPS()
+
+test_dataset = Test_TEPS()
 
 pop_dict = dict()
 population = configspace.sample_configuration(pop_size)
@@ -60,14 +57,15 @@ pop_dict = dict_loop(pop_dict, population)
 config_file = "configs.csv"
 score_file = "scores.csv"
 first = True
-
 for count,i in enumerate(range(num_iter)):
     pop = []
     for i in population:
-        pop.append([i.get_dictionary(), train_dataloader, test_dataloader])
+        pop.append([i.get_dictionary(), train_dataset, test_dataset])
+    
     with Pool(processes = 2) as pool:
         results = pool.starmap(train_function, pop)
         pool.close()
+        torch.cuda.empty_cache()
         pool.join()
     scores = []
     for i in results:

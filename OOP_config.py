@@ -79,7 +79,7 @@ def init_config():
   lr =CSH.Constant(name = "lr",			value = 0.001)
   p =CSH.Constant(name = "p",			value = 0.05 )
   window_size = CSH.Constant(name = "window_size", value = 200)
-  channels = CSH.UniformIntegerHyperparameter(name = "channels", lower = 1 ,upper = 52)
+  channels = CSH.UniformIntegerHyperparameter(name = "channels", lower = 1 ,upper = 8)
   layers = CSH.Constant(name = "layers", value = 4)
     ###Topology Definition]###
 
