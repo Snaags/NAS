@@ -5,7 +5,7 @@ import logging
 logging.basicConfig(level=logging.WARNING)
 
 import argparse
-
+import torch
 import hpbandster.core.nameserver as hpns
 import hpbandster.core.result as hpres
 
@@ -39,9 +39,9 @@ def save2csv(filename : str, dictionary :dict, first = False,iter_num : int = 0)
 w = MyWorker(sleep_interval = 0, nameserver='127.0.0.1',run_id='example1')
 configspace = w.get_configspace()
 ###Configuration Settings###
-pop_size = 100
+pop_size = 36
 elite_size = 0.2
-num_iter = 5
+num_iter = 20
 
 
 pop_dict = dict()
@@ -57,9 +57,10 @@ for count,i in enumerate(range(num_iter)):
     pop = []
     for i in population:
         pop.append(i.get_dictionary())
-    with Pool(processes = 1) as pool:
+    with Pool(processes = 6,maxtasksperchild = 1) as pool:
         results = pool.map(train_function, pop)
         pool.close()
+        torch.cuda.empty_cache()
         pool.join()
     scores = []
     for i in results:

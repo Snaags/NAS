@@ -42,7 +42,7 @@ def getConfusionMatrix(model,testLoader,n_classes = 2 ,show_image=False):
           outputs = model(inputs.float())
           preds = torch.argmax(outputs, 1).long()
           #get confusion matrix
-          if i == 50:
+          if i == 150:
             break
           for j in range(inputs.size()[0]):
               
@@ -66,24 +66,22 @@ def getConfusionMatrix(model,testLoader,n_classes = 2 ,show_image=False):
       #print results
       total_evaluations = incorrect+correct
       accuracy = correct/(total_evaluations)
-      PRINT_DATA = False
+      print("Total Evaluation Samples: ", total_evaluations)
       print("Accuracy: " , str(100*accuracy),"%")
-      if PRINT_DATA == True:
-        print("Total Evaluation Samples: ", total_evaluations)
-        print("True Positives: " , str(TP))
-        print("False Positives: " , str(FP))
-        print("True Negatives: " , str(TN))
-        print("False Negatives: " , str(FN))
-        print("Correct: " , str(correct))
-        print("Incorrect: " , str(incorrect))
-        print(" ") 
-        total = 0
-        for i in range(n_classes):
-          class_num = confusion_matrix[:,i]
-          print("Total samples for class ",str(i),": ",str(torch.sum(class_num).item()))
-          print("Correct samples for class ",str(i),": ",str(confusion_matrix[i,i].item()))
-          total+= torch.sum(class_num).item()
-        print("Total Samples: " ,str(total))
+      print("True Positives: " , str(TP))
+      print("False Positives: " , str(FP))
+      print("True Negatives: " , str(TN))
+      print("False Negatives: " , str(FN))
+      print("Correct: " , str(correct))
+      print("Incorrect: " , str(incorrect))
+      print(" ") 
+      total = 0
+      for i in range(n_classes):
+        class_num = confusion_matrix[:,i]
+        print("Total samples for class ",str(i),": ",str(torch.sum(class_num).item()))
+        print("Correct samples for class ",str(i),": ",str(confusion_matrix[i,i].item()))
+        total+= torch.sum(class_num).item()
+      print("Total Samples: " ,str(total))
       return accuracy, confusion_matrix, TP, FP, FN , TN
 
 
@@ -128,10 +126,12 @@ def alloc_gpu():
       r = torch.cuda.memory_reserved(i)
       t = torch.cuda.get_device_properties(i).total_memory
       gpu_mem_free.append( t-r )
+    print(gpu_mem_free)
+    print("Chosen Device: ",gpu_mem_free.index(max(gpu_mem_free)))
     torch.cuda.set_device(gpu_mem_free.index(max(gpu_mem_free)))
 
-def main(hyperparameter,budget = 2000):
-    alloc_gpu() 
+def main(hyperparameter,budget = 20):
+    time.sleep(random.randint(0,10))
     VISUAL_MODE = False
     def cal_acc(y,t):
         return np.count_nonzero(y==t)/len(y)
@@ -156,6 +156,8 @@ def main(hyperparameter,budget = 2000):
 
     num_classes = train_dataset.get_n_classes()
     #print("Currently Running Hyperparameter Set: ", hyperparameter)
+    #print("Training classes: ",num_classes)
+    #print(hyperparameter)
     model = Model(input_size = train_dataset.x.shape[1:] ,output_size = num_classes,hyperparameters = hyperparameter)
     model = model.cuda()
     """
@@ -183,7 +185,7 @@ def main(hyperparameter,budget = 2000):
         optimizer.zero_grad()
         outputs = model(samples.float())
         
-        if i == 2: 
+        if False: 
          picture = make_dot(outputs.mean(), params=dict(model.named_parameters())    )
          picture.format = "png"
          picture.render("Model")
@@ -216,13 +218,13 @@ def main(hyperparameter,budget = 2000):
     """
     print()
     acc , CM , TP, FP , FN , TN = getConfusionMatrix( model,test_dataloader ,  num_classes  ) 
-   
-    import seaborn as sns; sns.set_theme()
-    fig = plt.figure(figsize = (25,15))
-    fig = sns.heatmap(CM,annot=True,fmt='d',cmap="Blues", cbar_kws={'label': 'Samples'})
-    fig.set(xlabel='Actual Class', ylabel='Predicted Class')
-    fig.set_title("Confusion Matrix", fontdict ={"fontsize": 25, "fontweight": "bold"}, y = 1.05)
-    fig.figure.savefig(OUTPUT_DIR+"/TEPS_"+"%.2f" % acc + ".png", format = "png", dpi = 500)
+    if False: 
+      import seaborn as sns; sns.set_theme()
+      fig = plt.figure(figsize = (25,15))
+      fig = sns.heatmap(CM,annot=True,fmt='d',cmap="Blues", cbar_kws={'label': 'Samples'})
+      fig.set(xlabel='Actual Class', ylabel='Predicted Class')
+      fig.set_title("Confusion Matrix", fontdict ={"fontsize": 25, "fontweight": "bold"}, y = 1.05)
+      fig.figure.savefig(OUTPUT_DIR+"/TEPS_"+"%.2f" % acc + ".png", format = "png", dpi = 500)
 
 
  
@@ -231,14 +233,38 @@ def main(hyperparameter,budget = 2000):
 
     return acc 
 
-def wrapper(hyperparameters):
-  try:
-    return main(hyperparameters)
-  except:
-    return 0
 
 if __name__ == "__main__":
-  hyperparameter = {'channels': 52, 'layers': 5, 'lr': 0.0007560788690317892, 'normal_cell_1_num_ops': 1, 'normal_cell_1_ops_1_input_1': 0, 'normal_cell_1_ops_1_input_2': 0, 'normal_cell_1_ops_1_type': 'MaxPool7', 'normal_cell_1_ops_2_input_1': 0, 'normal_cell_1_ops_2_input_2': 1, 'normal_cell_1_ops_2_type': 'MaxPool7', 'normal_cell_1_ops_3_input_1': 0, 'normal_cell_1_ops_3_input_2': 1, 'normal_cell_1_ops_3_type': 'MaxPool5', 'normal_cell_1_ops_4_input_1': 1, 'normal_cell_1_ops_4_input_2': 3, 'normal_cell_1_ops_4_type': 'SepConv7', 'normal_cell_1_ops_5_input_1': 3, 'normal_cell_1_ops_5_input_2': 3, 'normal_cell_1_ops_5_type': 'Conv3', 'normal_cell_1_ops_6_input_1': 2, 'normal_cell_1_ops_6_input_2': 0, 'normal_cell_1_ops_6_type': 'MaxPool5', 'num_conv': 1, 'num_re': 1, 'p': 0.05, 'reduction_cell_1_num_ops': 1, 'reduction_cell_1_ops_1_input_1': 0, 'reduction_cell_1_ops_1_input_2': 0, 'reduction_cell_1_ops_1_type': 'FactorizedReduce', 'window_size': 100}
-
-  main(hyperparameter )
+  hyperparameter = {"channels":  52,
+  "layers": 4,
+  "lr": 0.00016293069122740633,
+  "normal_cell_1_num_ops": 2,
+  "normal_cell_1_ops_1_input_1" : 0,
+  "normal_cell_1_ops_1_input_2" : 0,
+  "normal_cell_1_ops_1_type" : 'Conv3',
+  "normal_cell_1_ops_2_input_1": 1,
+  "normal_cell_1_ops_2_input_2": 1,
+  "normal_cell_1_ops_2_type": 'StdConv',
+  "normal_cell_1_ops_3_input_1": 1,
+  "normal_cell_1_ops_3_input_2": 1,
+  "normal_cell_1_ops_3_type": 'AvgPool',
+  "normal_cell_1_ops_4_input_1": 0,
+  "normal_cell_1_ops_4_input_2": 2,
+  "normal_cell_1_ops_4_type": 'Conv5',
+  "normal_cell_1_ops_5_input_1": 1,
+  "normal_cell_1_ops_5_input_2": 3,
+  "normal_cell_1_ops_5_type": 'Conv3',
+  "normal_cell_1_ops_6_input_1": 2,
+  "normal_cell_1_ops_6_input_2": 2,
+  "normal_cell_1_ops_6_type": 'Conv5',
+  "num_conv": 1,
+  "num_re": 1,
+  "p": 0.05,
+  "reduction_cell_1_num_ops": 1,
+  "reduction_cell_1_ops_1_input_1": 0,
+  "reduction_cell_1_ops_1_input_2": 0,
+  "reduction_cell_1_ops_1_type": 'FactorizedReduce',
+  "window_size": 2000}
+  #hyperparameter = {'channels': 64, 'normal_cell_1_num_ops': 5, 'normal_cell_1_ops_1_input_1': 0, 'normal_cell_1_ops_1_input_2': 0, 'normal_cell_1_ops_1_type': 'Conv5', 'normal_cell_1_ops_2_input_1': 1, 'normal_cell_1_ops_2_input_2': 1, 'normal_cell_1_ops_2_type': 'StdConv', 'normal_cell_1_ops_3_input_1': 2, 'normal_cell_1_ops_3_input_2': 0, 'normal_cell_1_ops_3_type': 'AvgPool', 'normal_cell_1_ops_4_input_1': 2, 'normal_cell_1_ops_4_input_2': 2, 'normal_cell_1_ops_4_type': 'MaxPool', 'normal_cell_1_ops_5_input_1': 4, 'normal_cell_1_ops_5_input_2': 2, 'normal_cell_1_ops_5_type': 'StdConv', 'layers': 3, 'lr': 0.010326044660341144, 'num_conv': 1, 'num_re': 1, 'reduction_cell_1_num_ops': 1, 'reduction_cell_1_ops_1_input_1': 0, 'reduction_cell_1_ops_1_input_2': 0, 'reduction_cell_1_ops_1_type': 'FactorizedReduce', 'window_size': 525, "p": 0.2,"layers" : 3}
+  main(hyperparameter,2000 )
 
