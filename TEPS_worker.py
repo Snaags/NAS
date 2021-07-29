@@ -130,7 +130,7 @@ def alloc_gpu():
       gpu_mem_free.append( t-r )
     torch.cuda.set_device(gpu_mem_free.index(max(gpu_mem_free)))
 
-def main(hyperparameter,budget = 2000):
+def main(hyperparameter,train_dataloader, test_dataloader,budget = 2000):
     alloc_gpu() 
     VISUAL_MODE = False
     def cal_acc(y,t):

@@ -1,6 +1,6 @@
 #import os
 #os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
-
+import torch
 import logging 
 logging.basicConfig(level=logging.WARNING)
 
@@ -8,7 +8,7 @@ import argparse
 
 import hpbandster.core.nameserver as hpns
 import hpbandster.core.result as hpres
-
+from datasets import Train_TEPS, Test_TEPS
 from hpbandster.optimizers import BOHB as BOHB
 from hpbandster.optimizers import RandomSearch as RandomSearch
 from worker_hp_TEPS import MyWorker
@@ -42,7 +42,15 @@ configspace = w.get_configspace()
 pop_size = 100
 elite_size = 0.2
 num_iter = 5
+batch_size = 256
+train_dataset = Train_TEPS(200)
+train_dataloader = torch.utils.data.DataLoader(train_dataset, batch_size=batch_size,
+    shuffle = True,drop_last=True,pin_memory=True)
 
+test_dataset = Test_TEPS(200)
+test_dataloader = torch.utils.data.DataLoader(test_dataset, batch_size=batch_size,shuffle = True, 
+                                     drop_last=True,pin_memory=True 
+                                     )
 
 pop_dict = dict()
 population = configspace.sample_configuration(pop_size)
@@ -56,9 +64,9 @@ first = True
 for count,i in enumerate(range(num_iter)):
     pop = []
     for i in population:
-        pop.append(i.get_dictionary())
-    with Pool(processes = 1) as pool:
-        results = pool.map(train_function, pop)
+        pop.append([i.get_dictionary(), train_dataloader, test_dataloader])
+    with Pool(processes = 2) as pool:
+        results = pool.starmap(train_function, pop)
         pool.close()
         pool.join()
     scores = []
