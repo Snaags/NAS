@@ -3819,3 +3819,1346 @@ Data after Normal Cell 3: torch.Size([256, 48, 25])
 Size of x after cells: torch.Size([256, 48, 25])
 Size of x after gap: torch.Size([256, 48, 1])
 Size of dense input: 48
+1627678175.914232
+1627678286.4181423
+1627678329.395267
+1627678469.3993683
+1627678525.1460283
+1627678566.942536
+1627766805.3553634
+1627766805.3578875
+1627766805.394301
+1627766805.3944955
+1627766805.3960333
+1627766805.39684
+1627766805.3987138
+1627766805.4001882
+1627766959.4209657
+1627766959.420966
+1627766959.4356627
+1627766959.4358697
+1627766959.4401035
+1627766959.4448147
+1627766959.4454222
+1627766959.4497724
+1627767022.3005624
+1627767022.300563
+1627767022.31691
+1627767022.3169637
+1627767022.3230953
+1627767022.3241827
+1627767022.3290465
+1627767022.4107697
+1627767085.9527907
+1627767085.9528103
+1627767086.1686926
+Input Size: torch.Size([256, 52, 200])
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 8, 200])
+After in_conv: torch.Size([256, 4, 200])
+1627767094.1686113
+1627767094.1772578
+Input Size: torch.Size([256, 52, 200])
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 4, 200])
+After in_conv: torch.Size([256, 5, 200])
+1627767094.6572256
+1627767094.6687295
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 2, 200])
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 1, 200])
+1627767095.1416354
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 1, 200])
+1627767150.4620657
+1627767150.462279
+1627767154.4819837
+Input Size: torch.Size([256, 52, 200])
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 4, 200])
+After in_conv: torch.Size([256, 4, 200])
+1627767161.835679
+1627767161.8426452
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 8, 200])
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 2, 200])
+1627767162.3274379
+1627767162.3369343
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 5, 200])
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 6, 200])
+Data after Normal Cell 0: torch.Size([256, 6, 200])
+Data after Reduction Cell 0: torch.Size([256, 12, 100])
+Data after Normal Cell 1: torch.Size([256, 12, 100])
+Data after Reduction Cell 1: torch.Size([256, 24, 50])
+Data after Normal Cell 2: torch.Size([256, 24, 50])
+Data after Reduction Cell 2: torch.Size([256, 48, 25])
+Data after Normal Cell 3: torch.Size([256, 48, 25])
+Size of x after cells: torch.Size([256, 48, 25])
+Size of x after gap: torch.Size([256, 48, 1])
+Size of dense input: 48
+1627767162.7653642
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 5, 200])
+1627767174.7857015
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 8, 200])
+1627767208.0932443
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 5, 200])
+1627767217.4326103
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 8, 200])
+1627767217.80386
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 4, 200])
+1627767218.1715455
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 1, 200])
+Data after Normal Cell 0: torch.Size([256, 1, 200])
+Data after Reduction Cell 0: torch.Size([256, 2, 100])
+Data after Normal Cell 1: torch.Size([256, 2, 100])
+Data after Reduction Cell 1: torch.Size([256, 4, 50])
+Data after Normal Cell 2: torch.Size([256, 4, 50])
+Data after Reduction Cell 2: torch.Size([256, 8, 25])
+Data after Normal Cell 3: torch.Size([256, 8, 25])
+Size of x after cells: torch.Size([256, 8, 25])
+Size of x after gap: torch.Size([256, 8, 1])
+Size of dense input: 8
+1627767230.9182134
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 5, 200])
+1627770245.219341
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 8, 200])
+Data after Normal Cell 0: torch.Size([256, 8, 200])
+Data after Reduction Cell 0: torch.Size([256, 16, 100])
+Data after Normal Cell 1: torch.Size([256, 16, 100])
+Data after Reduction Cell 1: torch.Size([256, 32, 50])
+Data after Normal Cell 2: torch.Size([256, 32, 50])
+Data after Reduction Cell 2: torch.Size([256, 64, 25])
+Data after Normal Cell 3: torch.Size([256, 64, 25])
+Size of x after cells: torch.Size([256, 64, 25])
+Size of x after gap: torch.Size([256, 64, 1])
+Size of dense input: 64
+1627770263.0110655
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 4, 200])
+1627770263.4768193
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 6, 200])
+1627770263.883076
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 5, 200])
+1627770264.283226
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 8, 200])
+1627770424.0306826
+1627770424.248916
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 1, 200])
+1627770430.3385139
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 4, 200])
+1627770430.7620993
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 1, 200])
+1627770551.2065954
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 7, 200])
+1627770557.2037835
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 1, 200])
+1627770557.594812
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 4, 200])
+Data after Normal Cell 0: torch.Size([256, 4, 200])
+Data after Reduction Cell 0: torch.Size([256, 8, 100])
+Data after Normal Cell 1: torch.Size([256, 8, 100])
+Data after Reduction Cell 1: torch.Size([256, 16, 50])
+Data after Normal Cell 2: torch.Size([256, 16, 50])
+Data after Reduction Cell 2: torch.Size([256, 32, 25])
+Data after Normal Cell 3: torch.Size([256, 32, 25])
+Size of x after cells: torch.Size([256, 32, 25])
+Size of x after gap: torch.Size([256, 32, 1])
+Size of dense input: 32
+1627770640.7546
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 3, 200])
+1627770646.85942
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 6, 200])
+1627770647.2406518
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 3, 200])
+1627770726.3335524
+1627770726.5616379
+1627770726.5835745
+1627770726.6040087
+1627773131.339083
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 4, 200])
+1627773136.321891
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 3, 200])
+1627773136.7488415
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 7, 200])
+1627773137.1274862
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 3, 200])
+Data after Normal Cell 0: torch.Size([256, 3, 200])
+Data after Reduction Cell 0: torch.Size([256, 6, 100])
+Data after Normal Cell 1: torch.Size([256, 6, 100])
+Data after Reduction Cell 1: torch.Size([256, 12, 50])
+Data after Normal Cell 2: torch.Size([256, 12, 50])
+Data after Reduction Cell 2: torch.Size([256, 24, 25])
+Data after Normal Cell 3: torch.Size([256, 24, 25])
+Size of x after cells: torch.Size([256, 24, 25])
+Size of x after gap: torch.Size([256, 24, 1])
+Size of dense input: 24
+1627774134.5405712
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 1, 200])
+1627774140.5169365
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 3, 200])
+1627774140.9805465
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 1, 200])
+Data after Normal Cell 0: torch.Size([256, 1, 200])
+Data after Reduction Cell 0: torch.Size([256, 2, 100])
+Data after Normal Cell 1: torch.Size([256, 2, 100])
+Data after Reduction Cell 1: torch.Size([256, 4, 50])
+Data after Normal Cell 2: torch.Size([256, 4, 50])
+Data after Reduction Cell 2: torch.Size([256, 8, 25])
+Data after Normal Cell 3: torch.Size([256, 8, 25])
+Size of x after cells: torch.Size([256, 8, 25])
+Size of x after gap: torch.Size([256, 8, 1])
+Size of dense input: 8
+1627774412.733889
+1627774412.9377766
+1627774412.955114
+1627774412.9732645
+1627774472.5237782
+1627774472.6757371
+1627774472.6829937
+1627774472.6909678
+1627774596.5753207
+1627774756.0289524
+1627775021.001667
+1627775027.683093
+1627775029.597651
+1627775030.6156886
+1627775099.0564554
+1627775281.2941544
+1627775318.328419
+1627775434.3245704
+1627775901.3229344
+1627776019.023724
+1627776019.0696914
+1627776019.0755827
+1627776019.0804236
+1627776143.9931233
+1627776207.3353386
+1627776272.9923124
+1627776335.949535
+1627776340.80342
+1627776381.1870697
+1627776381.2544131
+1627776381.2625148
+1627776381.471511
+1627792054.5819948
+1627792441.692849
+1627792441.74052
+1627792441.7471294
+1627792442.014007
+1627792587.3346193
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 8, 200])
+1627792592.118489
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 5, 200])
+1627792592.543156
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 5, 200])
+1627792592.9521105
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 8, 200])
+1627835889.470024
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 4, 200])
+1627835892.7489572
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 8, 200])
+1627835893.084992
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 8, 200])
+1627835893.4190776
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 1, 200])
+1627836185.6212678
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 6, 200])
+1627836187.562938
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 2, 200])
+1627836187.8966777
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 3, 200])
+1627836188.2519777
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 6, 200])
+1627836252.8011332
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 3, 200])
+1627836254.740744
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 4, 200])
+1627836255.075309
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 2, 200])
+1627836255.4095054
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 4, 200])
+1627836773.57342
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 5, 200])
+Data after Normal Cell 0: torch.Size([256, 5, 200])
+Data after Reduction Cell 0: torch.Size([256, 10, 100])
+Data after Normal Cell 1: torch.Size([256, 10, 100])
+Data after Reduction Cell 1: torch.Size([256, 20, 50])
+Data after Normal Cell 2: torch.Size([256, 20, 50])
+Data after Reduction Cell 2: torch.Size([256, 40, 25])
+Data after Normal Cell 3: torch.Size([256, 40, 25])
+Size of x after cells: torch.Size([256, 40, 25])
+Size of x after gap: torch.Size([256, 40, 1])
+Size of dense input: 40
+1627836789.148788
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 7, 200])
+Data after Normal Cell 0: torch.Size([256, 7, 200])
+Data after Reduction Cell 0: torch.Size([256, 14, 100])
+Data after Normal Cell 1: torch.Size([256, 14, 100])
+Data after Reduction Cell 1: torch.Size([256, 28, 50])
+Data after Normal Cell 2: torch.Size([256, 28, 50])
+Data after Reduction Cell 2: torch.Size([256, 56, 25])
+Data after Normal Cell 3: torch.Size([256, 56, 25])
+Size of x after cells: torch.Size([256, 56, 25])
+Size of x after gap: torch.Size([256, 56, 1])
+Size of dense input: 56
+1627836801.824025
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 1, 200])
+Data after Normal Cell 0: torch.Size([256, 1, 200])
+Data after Reduction Cell 0: torch.Size([256, 2, 100])
+Data after Normal Cell 1: torch.Size([256, 2, 100])
+Data after Reduction Cell 1: torch.Size([256, 4, 50])
+Data after Normal Cell 2: torch.Size([256, 4, 50])
+Data after Reduction Cell 2: torch.Size([256, 8, 25])
+Data after Normal Cell 3: torch.Size([256, 8, 25])
+Size of x after cells: torch.Size([256, 8, 25])
+Size of x after gap: torch.Size([256, 8, 1])
+Size of dense input: 8
+1627836814.425816
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 4, 200])
+Data after Normal Cell 0: torch.Size([256, 4, 200])
+Data after Reduction Cell 0: torch.Size([256, 8, 100])
+Data after Normal Cell 1: torch.Size([256, 8, 100])
+Data after Reduction Cell 1: torch.Size([256, 16, 50])
+Data after Normal Cell 2: torch.Size([256, 16, 50])
+Data after Reduction Cell 2: torch.Size([256, 32, 25])
+Data after Normal Cell 3: torch.Size([256, 32, 25])
+Size of x after cells: torch.Size([256, 32, 25])
+Size of x after gap: torch.Size([256, 32, 1])
+Size of dense input: 32
+1627836828.0737858
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 2, 200])
+Data after Normal Cell 0: torch.Size([256, 2, 200])
+Data after Reduction Cell 0: torch.Size([256, 4, 100])
+Data after Normal Cell 1: torch.Size([256, 4, 100])
+Data after Reduction Cell 1: torch.Size([256, 8, 50])
+Data after Normal Cell 2: torch.Size([256, 8, 50])
+Data after Reduction Cell 2: torch.Size([256, 16, 25])
+Data after Normal Cell 3: torch.Size([256, 16, 25])
+Size of x after cells: torch.Size([256, 16, 25])
+Size of x after gap: torch.Size([256, 16, 1])
+Size of dense input: 16
+1627836840.2482846
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 2, 200])
+Data after Normal Cell 0: torch.Size([256, 2, 200])
+Data after Reduction Cell 0: torch.Size([256, 4, 100])
+Data after Normal Cell 1: torch.Size([256, 4, 100])
+Data after Reduction Cell 1: torch.Size([256, 8, 50])
+Data after Normal Cell 2: torch.Size([256, 8, 50])
+Data after Reduction Cell 2: torch.Size([256, 16, 25])
+Data after Normal Cell 3: torch.Size([256, 16, 25])
+Size of x after cells: torch.Size([256, 16, 25])
+Size of x after gap: torch.Size([256, 16, 1])
+Size of dense input: 16
+1627836852.458656
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 6, 200])
+Data after Normal Cell 0: torch.Size([256, 6, 200])
+Data after Reduction Cell 0: torch.Size([256, 12, 100])
+Data after Normal Cell 1: torch.Size([256, 12, 100])
+Data after Reduction Cell 1: torch.Size([256, 24, 50])
+Data after Normal Cell 2: torch.Size([256, 24, 50])
+Data after Reduction Cell 2: torch.Size([256, 48, 25])
+Data after Normal Cell 3: torch.Size([256, 48, 25])
+Size of x after cells: torch.Size([256, 48, 25])
+Size of x after gap: torch.Size([256, 48, 1])
+Size of dense input: 48
+1627836864.9554074
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 1, 200])
+Data after Normal Cell 0: torch.Size([256, 1, 200])
+Data after Reduction Cell 0: torch.Size([256, 2, 100])
+Data after Normal Cell 1: torch.Size([256, 2, 100])
+Data after Reduction Cell 1: torch.Size([256, 4, 50])
+Data after Normal Cell 2: torch.Size([256, 4, 50])
+Data after Reduction Cell 2: torch.Size([256, 8, 25])
+Data after Normal Cell 3: torch.Size([256, 8, 25])
+Size of x after cells: torch.Size([256, 8, 25])
+Size of x after gap: torch.Size([256, 8, 1])
+Size of dense input: 8
+1627836888.2299855
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 5, 200])
+1627836890.1982832
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 6, 200])
+Data after Normal Cell 0: torch.Size([256, 6, 200])
+Data after Reduction Cell 0: torch.Size([256, 12, 100])
+Data after Normal Cell 1: torch.Size([256, 12, 100])
+Data after Reduction Cell 1: torch.Size([256, 24, 50])
+Data after Normal Cell 2: torch.Size([256, 24, 50])
+Data after Reduction Cell 2: torch.Size([256, 48, 25])
+Data after Normal Cell 3: torch.Size([256, 48, 25])
+Size of x after cells: torch.Size([256, 48, 25])
+Size of x after gap: torch.Size([256, 48, 1])
+Size of dense input: 48
+1627836896.9702206
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 7, 200])
+1627836898.907133
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 8, 200])
+Data after Normal Cell 0: torch.Size([256, 8, 200])
+Data after Reduction Cell 0: torch.Size([256, 16, 100])
+Data after Normal Cell 1: torch.Size([256, 16, 100])
+Data after Reduction Cell 1: torch.Size([256, 32, 50])
+Data after Normal Cell 2: torch.Size([256, 32, 50])
+Data after Reduction Cell 2: torch.Size([256, 64, 25])
+Data after Normal Cell 3: torch.Size([256, 64, 25])
+Size of x after cells: torch.Size([256, 64, 25])
+Size of x after gap: torch.Size([256, 64, 1])
+Size of dense input: 64
+1627836911.8062375
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 5, 200])
+Data after Normal Cell 0: torch.Size([256, 5, 200])
+Data after Reduction Cell 0: torch.Size([256, 10, 100])
+Data after Normal Cell 1: torch.Size([256, 10, 100])
+Data after Reduction Cell 1: torch.Size([256, 20, 50])
+Data after Normal Cell 2: torch.Size([256, 20, 50])
+Data after Reduction Cell 2: torch.Size([256, 40, 25])
+Data after Normal Cell 3: torch.Size([256, 40, 25])
+Size of x after cells: torch.Size([256, 40, 25])
+Size of x after gap: torch.Size([256, 40, 1])
+Size of dense input: 40
+1627836944.1337633
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 5, 200])
+Data after Normal Cell 0: torch.Size([256, 5, 200])
+Data after Reduction Cell 0: torch.Size([256, 10, 100])
+Data after Normal Cell 1: torch.Size([256, 10, 100])
+Data after Reduction Cell 1: torch.Size([256, 20, 50])
+Data after Normal Cell 2: torch.Size([256, 20, 50])
+Data after Reduction Cell 2: torch.Size([256, 40, 25])
+Data after Normal Cell 3: torch.Size([256, 40, 25])
+Size of x after cells: torch.Size([256, 40, 25])
+Size of x after gap: torch.Size([256, 40, 1])
+Size of dense input: 40
+1627836971.0080495
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 2, 200])
+Data after Normal Cell 0: torch.Size([256, 2, 200])
+Data after Reduction Cell 0: torch.Size([256, 4, 100])
+Data after Normal Cell 1: torch.Size([256, 4, 100])
+Data after Reduction Cell 1: torch.Size([256, 8, 50])
+Data after Normal Cell 2: torch.Size([256, 8, 50])
+Data after Reduction Cell 2: torch.Size([256, 16, 25])
+Data after Normal Cell 3: torch.Size([256, 16, 25])
+Size of x after cells: torch.Size([256, 16, 25])
+Size of x after gap: torch.Size([256, 16, 1])
+Size of dense input: 16
+1627837009.5183887
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 3, 200])
+Data after Normal Cell 0: torch.Size([256, 3, 200])
+Data after Reduction Cell 0: torch.Size([256, 6, 100])
+Data after Normal Cell 1: torch.Size([256, 6, 100])
+Data after Reduction Cell 1: torch.Size([256, 12, 50])
+Data after Normal Cell 2: torch.Size([256, 12, 50])
+Data after Reduction Cell 2: torch.Size([256, 24, 25])
+Data after Normal Cell 3: torch.Size([256, 24, 25])
+Size of x after cells: torch.Size([256, 24, 25])
+Size of x after gap: torch.Size([256, 24, 1])
+Size of dense input: 24
+1627837043.211193
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 3, 200])
+1627837043.5660303
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 7, 200])
+Data after Normal Cell 0: torch.Size([256, 7, 200])
+Data after Reduction Cell 0: torch.Size([256, 14, 100])
+Data after Normal Cell 1: torch.Size([256, 14, 100])
+Data after Reduction Cell 1: torch.Size([256, 28, 50])
+Data after Normal Cell 2: torch.Size([256, 28, 50])
+Data after Reduction Cell 2: torch.Size([256, 56, 25])
+Data after Normal Cell 3: torch.Size([256, 56, 25])
+Size of x after cells: torch.Size([256, 56, 25])
+Size of x after gap: torch.Size([256, 56, 1])
+Size of dense input: 56
+1627837086.329458
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 6, 200])
+Data after Normal Cell 0: torch.Size([256, 6, 200])
+Data after Reduction Cell 0: torch.Size([256, 12, 100])
+Data after Normal Cell 1: torch.Size([256, 12, 100])
+Data after Reduction Cell 1: torch.Size([256, 24, 50])
+Data after Normal Cell 2: torch.Size([256, 24, 50])
+Data after Reduction Cell 2: torch.Size([256, 48, 25])
+Data after Normal Cell 3: torch.Size([256, 48, 25])
+Size of x after cells: torch.Size([256, 48, 25])
+Size of x after gap: torch.Size([256, 48, 1])
+Size of dense input: 48
+1627837130.2192397
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 6, 200])
+1627837132.1628664
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 5, 200])
+1627837132.48742
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 8, 200])
+1627837132.8097715
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 8, 200])
+1627837160.1230397
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 6, 200])
+Data after Normal Cell 0: torch.Size([256, 6, 200])
+Data after Reduction Cell 0: torch.Size([256, 12, 100])
+Data after Normal Cell 1: torch.Size([256, 12, 100])
+Data after Reduction Cell 1: torch.Size([256, 24, 50])
+Data after Normal Cell 2: torch.Size([256, 24, 50])
+Data after Reduction Cell 2: torch.Size([256, 48, 25])
+Data after Normal Cell 3: torch.Size([256, 48, 25])
+Size of x after cells: torch.Size([256, 48, 25])
+Size of x after gap: torch.Size([256, 48, 1])
+Size of dense input: 48
+1627837257.590713
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 1, 200])
+Data after Normal Cell 0: torch.Size([256, 1, 200])
+Data after Reduction Cell 0: torch.Size([256, 2, 100])
+Data after Normal Cell 1: torch.Size([256, 2, 100])
+Data after Reduction Cell 1: torch.Size([256, 4, 50])
+Data after Normal Cell 2: torch.Size([256, 4, 50])
+Data after Reduction Cell 2: torch.Size([256, 8, 25])
+Data after Normal Cell 3: torch.Size([256, 8, 25])
+Size of x after cells: torch.Size([256, 8, 25])
+Size of x after gap: torch.Size([256, 8, 1])
+Size of dense input: 8
+1627837295.1131804
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 1, 200])
+1627837295.4586267
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 6, 200])
+1627837295.790335
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 5, 200])
+Data after Normal Cell 0: torch.Size([256, 5, 200])
+Data after Reduction Cell 0: torch.Size([256, 10, 100])
+Data after Normal Cell 1: torch.Size([256, 10, 100])
+Data after Reduction Cell 1: torch.Size([256, 20, 50])
+Data after Normal Cell 2: torch.Size([256, 20, 50])
+Data after Reduction Cell 2: torch.Size([256, 40, 25])
+Data after Normal Cell 3: torch.Size([256, 40, 25])
+Size of x after cells: torch.Size([256, 40, 25])
+Size of x after gap: torch.Size([256, 40, 1])
+Size of dense input: 40
+1627837327.49473
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 4, 200])
+Data after Normal Cell 0: torch.Size([256, 4, 200])
+Data after Reduction Cell 0: torch.Size([256, 8, 100])
+Data after Normal Cell 1: torch.Size([256, 8, 100])
+Data after Reduction Cell 1: torch.Size([256, 16, 50])
+Data after Normal Cell 2: torch.Size([256, 16, 50])
+Data after Reduction Cell 2: torch.Size([256, 32, 25])
+Data after Normal Cell 3: torch.Size([256, 32, 25])
+Size of x after cells: torch.Size([256, 32, 25])
+Size of x after gap: torch.Size([256, 32, 1])
+Size of dense input: 32
+1627837358.6963532
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 5, 200])
+1627837359.1557655
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 1, 200])
+1627837460.0244737
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 1, 200])
+Data after Normal Cell 0: torch.Size([256, 1, 200])
+Data after Reduction Cell 0: torch.Size([256, 2, 100])
+Data after Normal Cell 1: torch.Size([256, 2, 100])
+Data after Reduction Cell 1: torch.Size([256, 4, 50])
+Data after Normal Cell 2: torch.Size([256, 4, 50])
+Data after Reduction Cell 2: torch.Size([256, 8, 25])
+Data after Normal Cell 3: torch.Size([256, 8, 25])
+Size of x after cells: torch.Size([256, 8, 25])
+Size of x after gap: torch.Size([256, 8, 1])
+Size of dense input: 8
+1627837490.637506
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 1, 200])
+Data after Normal Cell 0: torch.Size([256, 1, 200])
+Data after Reduction Cell 0: torch.Size([256, 2, 100])
+Data after Normal Cell 1: torch.Size([256, 2, 100])
+Data after Reduction Cell 1: torch.Size([256, 4, 50])
+Data after Normal Cell 2: torch.Size([256, 4, 50])
+Data after Reduction Cell 2: torch.Size([256, 8, 25])
+Data after Normal Cell 3: torch.Size([256, 8, 25])
+Size of x after cells: torch.Size([256, 8, 25])
+Size of x after gap: torch.Size([256, 8, 1])
+Size of dense input: 8
+1627837504.1843696
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 5, 200])
+1627837504.529955
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 5, 200])
+Data after Normal Cell 0: torch.Size([256, 5, 200])
+Data after Reduction Cell 0: torch.Size([256, 10, 100])
+Data after Normal Cell 1: torch.Size([256, 10, 100])
+Data after Reduction Cell 1: torch.Size([256, 20, 50])
+Data after Normal Cell 2: torch.Size([256, 20, 50])
+Data after Reduction Cell 2: torch.Size([256, 40, 25])
+Data after Normal Cell 3: torch.Size([256, 40, 25])
+Size of x after cells: torch.Size([256, 40, 25])
+Size of x after gap: torch.Size([256, 40, 1])
+Size of dense input: 40
+1627837520.2213702
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 6, 200])
+1627837522.109337
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 3, 200])
+Data after Normal Cell 0: torch.Size([256, 3, 200])
+Data after Reduction Cell 0: torch.Size([256, 6, 100])
+Data after Normal Cell 1: torch.Size([256, 6, 100])
+Data after Reduction Cell 1: torch.Size([256, 12, 50])
+Data after Normal Cell 2: torch.Size([256, 12, 50])
+Data after Reduction Cell 2: torch.Size([256, 24, 25])
+Data after Normal Cell 3: torch.Size([256, 24, 25])
+Size of x after cells: torch.Size([256, 24, 25])
+Size of x after gap: torch.Size([256, 24, 1])
+Size of dense input: 24
+1627837544.9759145
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 8, 200])
+Data after Normal Cell 0: torch.Size([256, 8, 200])
+Data after Reduction Cell 0: torch.Size([256, 16, 100])
+Data after Normal Cell 1: torch.Size([256, 16, 100])
+Data after Reduction Cell 1: torch.Size([256, 32, 50])
+Data after Normal Cell 2: torch.Size([256, 32, 50])
+Data after Reduction Cell 2: torch.Size([256, 64, 25])
+Data after Normal Cell 3: torch.Size([256, 64, 25])
+Size of x after cells: torch.Size([256, 64, 25])
+Size of x after gap: torch.Size([256, 64, 1])
+Size of dense input: 64
+1627837548.3897722
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 5, 200])
+1627837548.7326033
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 8, 200])
+1627837549.074216
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 8, 200])
+Data after Normal Cell 0: torch.Size([256, 8, 200])
+Data after Reduction Cell 0: torch.Size([256, 16, 100])
+Data after Normal Cell 1: torch.Size([256, 16, 100])
+Data after Reduction Cell 1: torch.Size([256, 32, 50])
+Data after Normal Cell 2: torch.Size([256, 32, 50])
+Data after Reduction Cell 2: torch.Size([256, 64, 25])
+Data after Normal Cell 3: torch.Size([256, 64, 25])
+Size of x after cells: torch.Size([256, 64, 25])
+Size of x after gap: torch.Size([256, 64, 1])
+Size of dense input: 64
+1627837551.1088269
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 6, 200])
+1627837551.5428672
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 8, 200])
+Data after Normal Cell 0: torch.Size([256, 8, 200])
+Data after Reduction Cell 0: torch.Size([256, 16, 100])
+Data after Normal Cell 1: torch.Size([256, 16, 100])
+Data after Reduction Cell 1: torch.Size([256, 32, 50])
+Data after Normal Cell 2: torch.Size([256, 32, 50])
+Data after Reduction Cell 2: torch.Size([256, 64, 25])
+Data after Normal Cell 3: torch.Size([256, 64, 25])
+Size of x after cells: torch.Size([256, 64, 25])
+Size of x after gap: torch.Size([256, 64, 1])
+Size of dense input: 64
+1627837553.4020314
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 2, 200])
+Data after Normal Cell 0: torch.Size([256, 2, 200])
+Data after Reduction Cell 0: torch.Size([256, 4, 100])
+Data after Normal Cell 1: torch.Size([256, 4, 100])
+Data after Reduction Cell 1: torch.Size([256, 8, 50])
+Data after Normal Cell 2: torch.Size([256, 8, 50])
+Data after Reduction Cell 2: torch.Size([256, 16, 25])
+Data after Normal Cell 3: torch.Size([256, 16, 25])
+Size of x after cells: torch.Size([256, 16, 25])
+Size of x after gap: torch.Size([256, 16, 1])
+Size of dense input: 16
+1627837555.1377308
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 4, 200])
+Data after Normal Cell 0: torch.Size([256, 4, 200])
+Data after Reduction Cell 0: torch.Size([256, 8, 100])
+Data after Normal Cell 1: torch.Size([256, 8, 100])
+Data after Reduction Cell 1: torch.Size([256, 16, 50])
+Data after Normal Cell 2: torch.Size([256, 16, 50])
+Data after Reduction Cell 2: torch.Size([256, 32, 25])
+Data after Normal Cell 3: torch.Size([256, 32, 25])
+Size of x after cells: torch.Size([256, 32, 25])
+Size of x after gap: torch.Size([256, 32, 1])
+Size of dense input: 32
+1627837556.9271324
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 7, 200])
+Data after Normal Cell 0: torch.Size([256, 7, 200])
+Data after Reduction Cell 0: torch.Size([256, 14, 100])
+Data after Normal Cell 1: torch.Size([256, 14, 100])
+Data after Reduction Cell 1: torch.Size([256, 28, 50])
+Data after Normal Cell 2: torch.Size([256, 28, 50])
+Data after Reduction Cell 2: torch.Size([256, 56, 25])
+Data after Normal Cell 3: torch.Size([256, 56, 25])
+Size of x after cells: torch.Size([256, 56, 25])
+Size of x after gap: torch.Size([256, 56, 1])
+Size of dense input: 56
+1627837558.9525013
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 5, 200])
+Data after Normal Cell 0: torch.Size([256, 5, 200])
+Data after Reduction Cell 0: torch.Size([256, 10, 100])
+Data after Normal Cell 1: torch.Size([256, 10, 100])
+Data after Reduction Cell 1: torch.Size([256, 20, 50])
+Data after Normal Cell 2: torch.Size([256, 20, 50])
+Data after Reduction Cell 2: torch.Size([256, 40, 25])
+Data after Normal Cell 3: torch.Size([256, 40, 25])
+Size of x after cells: torch.Size([256, 40, 25])
+Size of x after gap: torch.Size([256, 40, 1])
+Size of dense input: 40
+1627837560.781563
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 5, 200])
+1627837680.7091856
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 5, 200])
+1627837682.5551503
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 3, 200])
+Data after Normal Cell 0: torch.Size([256, 3, 200])
+Data after Reduction Cell 0: torch.Size([256, 6, 100])
+Data after Normal Cell 1: torch.Size([256, 6, 100])
+Data after Reduction Cell 1: torch.Size([256, 12, 50])
+Data after Normal Cell 2: torch.Size([256, 12, 50])
+Data after Reduction Cell 2: torch.Size([256, 24, 25])
+Data after Normal Cell 3: torch.Size([256, 24, 25])
+Size of x after cells: torch.Size([256, 24, 25])
+Size of x after gap: torch.Size([256, 24, 1])
+Size of dense input: 24
+1627837684.4256465
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 6, 200])
+1627837684.783493
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 8, 200])
+Data after Normal Cell 0: torch.Size([256, 8, 200])
+Data after Reduction Cell 0: torch.Size([256, 16, 100])
+Data after Normal Cell 1: torch.Size([256, 16, 100])
+Data after Reduction Cell 1: torch.Size([256, 32, 50])
+Data after Normal Cell 2: torch.Size([256, 32, 50])
+Data after Reduction Cell 2: torch.Size([256, 64, 25])
+Data after Normal Cell 3: torch.Size([256, 64, 25])
+Size of x after cells: torch.Size([256, 64, 25])
+Size of x after gap: torch.Size([256, 64, 1])
+Size of dense input: 64
+1627837687.1226547
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 3, 200])
+Data after Normal Cell 0: torch.Size([256, 3, 200])
+Data after Reduction Cell 0: torch.Size([256, 6, 100])
+Data after Normal Cell 1: torch.Size([256, 6, 100])
+Data after Reduction Cell 1: torch.Size([256, 12, 50])
+Data after Normal Cell 2: torch.Size([256, 12, 50])
+Data after Reduction Cell 2: torch.Size([256, 24, 25])
+Data after Normal Cell 3: torch.Size([256, 24, 25])
+Size of x after cells: torch.Size([256, 24, 25])
+Size of x after gap: torch.Size([256, 24, 1])
+Size of dense input: 24
+1627837688.8069565
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 1, 200])
+Data after Normal Cell 0: torch.Size([256, 1, 200])
+Data after Reduction Cell 0: torch.Size([256, 2, 100])
+Data after Normal Cell 1: torch.Size([256, 2, 100])
+Data after Reduction Cell 1: torch.Size([256, 4, 50])
+Data after Normal Cell 2: torch.Size([256, 4, 50])
+Data after Reduction Cell 2: torch.Size([256, 8, 25])
+Data after Normal Cell 3: torch.Size([256, 8, 25])
+Size of x after cells: torch.Size([256, 8, 25])
+Size of x after gap: torch.Size([256, 8, 1])
+Size of dense input: 8
+1627837690.5611649
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 8, 200])
+1627837691.0099623
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 5, 200])
+Data after Normal Cell 0: torch.Size([256, 5, 200])
+Data after Reduction Cell 0: torch.Size([256, 10, 100])
+Data after Normal Cell 1: torch.Size([256, 10, 100])
+Data after Reduction Cell 1: torch.Size([256, 20, 50])
+Data after Normal Cell 2: torch.Size([256, 20, 50])
+Data after Reduction Cell 2: torch.Size([256, 40, 25])
+Data after Normal Cell 3: torch.Size([256, 40, 25])
+Size of x after cells: torch.Size([256, 40, 25])
+Size of x after gap: torch.Size([256, 40, 1])
+Size of dense input: 40
+1627837692.9103444
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 1, 200])
+Data after Normal Cell 0: torch.Size([256, 1, 200])
+Data after Reduction Cell 0: torch.Size([256, 2, 100])
+Data after Normal Cell 1: torch.Size([256, 2, 100])
+Data after Reduction Cell 1: torch.Size([256, 4, 50])
+Data after Normal Cell 2: torch.Size([256, 4, 50])
+Data after Reduction Cell 2: torch.Size([256, 8, 25])
+Data after Normal Cell 3: torch.Size([256, 8, 25])
+Size of x after cells: torch.Size([256, 8, 25])
+Size of x after gap: torch.Size([256, 8, 1])
+Size of dense input: 8
+1627837694.73249
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 8, 200])
+1627839695.408656
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 8, 200])
+Data after Normal Cell 0: torch.Size([256, 8, 200])
+Data after Reduction Cell 0: torch.Size([256, 16, 100])
+Data after Normal Cell 1: torch.Size([256, 16, 100])
+Data after Reduction Cell 1: torch.Size([256, 32, 50])
+Data after Normal Cell 2: torch.Size([256, 32, 50])
+Data after Reduction Cell 2: torch.Size([256, 64, 25])
+Data after Normal Cell 3: torch.Size([256, 64, 25])
+Size of x after cells: torch.Size([256, 64, 25])
+Size of x after gap: torch.Size([256, 64, 1])
+Size of dense input: 64
+1627839698.7428591
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 4, 200])
+Data after Normal Cell 0: torch.Size([256, 4, 200])
+Data after Reduction Cell 0: torch.Size([256, 8, 100])
+Data after Normal Cell 1: torch.Size([256, 8, 100])
+Data after Reduction Cell 1: torch.Size([256, 16, 50])
+Data after Normal Cell 2: torch.Size([256, 16, 50])
+Data after Reduction Cell 2: torch.Size([256, 32, 25])
+Data after Normal Cell 3: torch.Size([256, 32, 25])
+Size of x after cells: torch.Size([256, 32, 25])
+Size of x after gap: torch.Size([256, 32, 1])
+Size of dense input: 32
+1627839700.675775
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 8, 200])
+Data after Normal Cell 0: torch.Size([256, 8, 200])
+Data after Reduction Cell 0: torch.Size([256, 16, 100])
+Data after Normal Cell 1: torch.Size([256, 16, 100])
+Data after Reduction Cell 1: torch.Size([256, 32, 50])
+Data after Normal Cell 2: torch.Size([256, 32, 50])
+Data after Reduction Cell 2: torch.Size([256, 64, 25])
+Data after Normal Cell 3: torch.Size([256, 64, 25])
+Size of x after cells: torch.Size([256, 64, 25])
+Size of x after gap: torch.Size([256, 64, 1])
+Size of dense input: 64
+1627839702.575312
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 7, 200])
+Data after Normal Cell 0: torch.Size([256, 7, 200])
+Data after Reduction Cell 0: torch.Size([256, 14, 100])
+Data after Normal Cell 1: torch.Size([256, 14, 100])
+Data after Reduction Cell 1: torch.Size([256, 28, 50])
+Data after Normal Cell 2: torch.Size([256, 28, 50])
+Data after Reduction Cell 2: torch.Size([256, 56, 25])
+Data after Normal Cell 3: torch.Size([256, 56, 25])
+Size of x after cells: torch.Size([256, 56, 25])
+Size of x after gap: torch.Size([256, 56, 1])
+Size of dense input: 56
+1627839704.4578393
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 7, 200])
+Data after Normal Cell 0: torch.Size([256, 7, 200])
+Data after Reduction Cell 0: torch.Size([256, 14, 100])
+Data after Normal Cell 1: torch.Size([256, 14, 100])
+Data after Reduction Cell 1: torch.Size([256, 28, 50])
+Data after Normal Cell 2: torch.Size([256, 28, 50])
+Data after Reduction Cell 2: torch.Size([256, 56, 25])
+Data after Normal Cell 3: torch.Size([256, 56, 25])
+Size of x after cells: torch.Size([256, 56, 25])
+Size of x after gap: torch.Size([256, 56, 1])
+Size of dense input: 56
+1627839706.2213023
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 7, 200])
+Data after Normal Cell 0: torch.Size([256, 7, 200])
+Data after Reduction Cell 0: torch.Size([256, 14, 100])
+Data after Normal Cell 1: torch.Size([256, 14, 100])
+Data after Reduction Cell 1: torch.Size([256, 28, 50])
+Data after Normal Cell 2: torch.Size([256, 28, 50])
+Data after Reduction Cell 2: torch.Size([256, 56, 25])
+Data after Normal Cell 3: torch.Size([256, 56, 25])
+Size of x after cells: torch.Size([256, 56, 25])
+Size of x after gap: torch.Size([256, 56, 1])
+Size of dense input: 56
+1627839707.9701638
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 7, 200])
+Data after Normal Cell 0: torch.Size([256, 7, 200])
+Data after Reduction Cell 0: torch.Size([256, 14, 100])
+Data after Normal Cell 1: torch.Size([256, 14, 100])
+Data after Reduction Cell 1: torch.Size([256, 28, 50])
+Data after Normal Cell 2: torch.Size([256, 28, 50])
+Data after Reduction Cell 2: torch.Size([256, 56, 25])
+Data after Normal Cell 3: torch.Size([256, 56, 25])
+Size of x after cells: torch.Size([256, 56, 25])
+Size of x after gap: torch.Size([256, 56, 1])
+Size of dense input: 56
+1627839710.033208
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 3, 200])
+Data after Normal Cell 0: torch.Size([256, 3, 200])
+Data after Reduction Cell 0: torch.Size([256, 6, 100])
+Data after Normal Cell 1: torch.Size([256, 6, 100])
+Data after Reduction Cell 1: torch.Size([256, 12, 50])
+Data after Normal Cell 2: torch.Size([256, 12, 50])
+Data after Reduction Cell 2: torch.Size([256, 24, 25])
+Data after Normal Cell 3: torch.Size([256, 24, 25])
+Size of x after cells: torch.Size([256, 24, 25])
+Size of x after gap: torch.Size([256, 24, 1])
+Size of dense input: 24
+1627839712.0128627
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 1, 200])
+Data after Normal Cell 0: torch.Size([256, 1, 200])
+Data after Reduction Cell 0: torch.Size([256, 2, 100])
+Data after Normal Cell 1: torch.Size([256, 2, 100])
+Data after Reduction Cell 1: torch.Size([256, 4, 50])
+Data after Normal Cell 2: torch.Size([256, 4, 50])
+Data after Reduction Cell 2: torch.Size([256, 8, 25])
+Data after Normal Cell 3: torch.Size([256, 8, 25])
+Size of x after cells: torch.Size([256, 8, 25])
+Size of x after gap: torch.Size([256, 8, 1])
+Size of dense input: 8
+1627839713.8079896
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 3, 200])
+Data after Normal Cell 0: torch.Size([256, 3, 200])
+Data after Reduction Cell 0: torch.Size([256, 6, 100])
+Data after Normal Cell 1: torch.Size([256, 6, 100])
+Data after Reduction Cell 1: torch.Size([256, 12, 50])
+Data after Normal Cell 2: torch.Size([256, 12, 50])
+Data after Reduction Cell 2: torch.Size([256, 24, 25])
+Data after Normal Cell 3: torch.Size([256, 24, 25])
+Size of x after cells: torch.Size([256, 24, 25])
+Size of x after gap: torch.Size([256, 24, 1])
+Size of dense input: 24
+1627839715.6682477
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 4, 200])
+Data after Normal Cell 0: torch.Size([256, 4, 200])
+Data after Reduction Cell 0: torch.Size([256, 8, 100])
+Data after Normal Cell 1: torch.Size([256, 8, 100])
+Data after Reduction Cell 1: torch.Size([256, 16, 50])
+Data after Normal Cell 2: torch.Size([256, 16, 50])
+Data after Reduction Cell 2: torch.Size([256, 32, 25])
+Data after Normal Cell 3: torch.Size([256, 32, 25])
+Size of x after cells: torch.Size([256, 32, 25])
+Size of x after gap: torch.Size([256, 32, 1])
+Size of dense input: 32
+1627839717.3709414
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 7, 200])
+Data after Normal Cell 0: torch.Size([256, 7, 200])
+Data after Reduction Cell 0: torch.Size([256, 14, 100])
+Data after Normal Cell 1: torch.Size([256, 14, 100])
+Data after Reduction Cell 1: torch.Size([256, 28, 50])
+Data after Normal Cell 2: torch.Size([256, 28, 50])
+Data after Reduction Cell 2: torch.Size([256, 56, 25])
+Data after Normal Cell 3: torch.Size([256, 56, 25])
+Size of x after cells: torch.Size([256, 56, 25])
+Size of x after gap: torch.Size([256, 56, 1])
+Size of dense input: 56
+1627839719.1601667
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 6, 200])
+Data after Normal Cell 0: torch.Size([256, 6, 200])
+Data after Reduction Cell 0: torch.Size([256, 12, 100])
+Data after Normal Cell 1: torch.Size([256, 12, 100])
+Data after Reduction Cell 1: torch.Size([256, 24, 50])
+Data after Normal Cell 2: torch.Size([256, 24, 50])
+Data after Reduction Cell 2: torch.Size([256, 48, 25])
+Data after Normal Cell 3: torch.Size([256, 48, 25])
+Size of x after cells: torch.Size([256, 48, 25])
+Size of x after gap: torch.Size([256, 48, 1])
+Size of dense input: 48
+1627839720.9429164
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 5, 200])
+Data after Normal Cell 0: torch.Size([256, 5, 200])
+Data after Reduction Cell 0: torch.Size([256, 10, 100])
+Data after Normal Cell 1: torch.Size([256, 10, 100])
+Data after Reduction Cell 1: torch.Size([256, 20, 50])
+Data after Normal Cell 2: torch.Size([256, 20, 50])
+Data after Reduction Cell 2: torch.Size([256, 40, 25])
+Data after Normal Cell 3: torch.Size([256, 40, 25])
+Size of x after cells: torch.Size([256, 40, 25])
+Size of x after gap: torch.Size([256, 40, 1])
+Size of dense input: 40
+1627839722.5338671
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 1, 200])
+Data after Normal Cell 0: torch.Size([256, 1, 200])
+Data after Reduction Cell 0: torch.Size([256, 2, 100])
+Data after Normal Cell 1: torch.Size([256, 2, 100])
+Data after Reduction Cell 1: torch.Size([256, 4, 50])
+Data after Normal Cell 2: torch.Size([256, 4, 50])
+Data after Reduction Cell 2: torch.Size([256, 8, 25])
+Data after Normal Cell 3: torch.Size([256, 8, 25])
+Size of x after cells: torch.Size([256, 8, 25])
+Size of x after gap: torch.Size([256, 8, 1])
+Size of dense input: 8
+1627839724.3174813
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 7, 200])
+Data after Normal Cell 0: torch.Size([256, 7, 200])
+Data after Reduction Cell 0: torch.Size([256, 14, 100])
+Data after Normal Cell 1: torch.Size([256, 14, 100])
+Data after Reduction Cell 1: torch.Size([256, 28, 50])
+Data after Normal Cell 2: torch.Size([256, 28, 50])
+Data after Reduction Cell 2: torch.Size([256, 56, 25])
+Data after Normal Cell 3: torch.Size([256, 56, 25])
+Size of x after cells: torch.Size([256, 56, 25])
+Size of x after gap: torch.Size([256, 56, 1])
+Size of dense input: 56
+1627839726.5776632
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 5, 200])
+Data after Normal Cell 0: torch.Size([256, 5, 200])
+Data after Reduction Cell 0: torch.Size([256, 10, 100])
+Data after Normal Cell 1: torch.Size([256, 10, 100])
+Data after Reduction Cell 1: torch.Size([256, 20, 50])
+Data after Normal Cell 2: torch.Size([256, 20, 50])
+Data after Reduction Cell 2: torch.Size([256, 40, 25])
+Data after Normal Cell 3: torch.Size([256, 40, 25])
+Size of x after cells: torch.Size([256, 40, 25])
+Size of x after gap: torch.Size([256, 40, 1])
+Size of dense input: 40
+1627839728.4728005
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 2, 200])
+Data after Normal Cell 0: torch.Size([256, 2, 200])
+Data after Reduction Cell 0: torch.Size([256, 4, 100])
+Data after Normal Cell 1: torch.Size([256, 4, 100])
+Data after Reduction Cell 1: torch.Size([256, 8, 50])
+Data after Normal Cell 2: torch.Size([256, 8, 50])
+Data after Reduction Cell 2: torch.Size([256, 16, 25])
+Data after Normal Cell 3: torch.Size([256, 16, 25])
+Size of x after cells: torch.Size([256, 16, 25])
+Size of x after gap: torch.Size([256, 16, 1])
+Size of dense input: 16
+1627839730.3135273
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 7, 200])
+Data after Normal Cell 0: torch.Size([256, 7, 200])
+Data after Reduction Cell 0: torch.Size([256, 14, 100])
+Data after Normal Cell 1: torch.Size([256, 14, 100])
+Data after Reduction Cell 1: torch.Size([256, 28, 50])
+Data after Normal Cell 2: torch.Size([256, 28, 50])
+Data after Reduction Cell 2: torch.Size([256, 56, 25])
+Data after Normal Cell 3: torch.Size([256, 56, 25])
+Size of x after cells: torch.Size([256, 56, 25])
+Size of x after gap: torch.Size([256, 56, 1])
+Size of dense input: 56
+1627839732.1728866
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 6, 200])
+Data after Normal Cell 0: torch.Size([256, 6, 200])
+Data after Reduction Cell 0: torch.Size([256, 12, 100])
+Data after Normal Cell 1: torch.Size([256, 12, 100])
+Data after Reduction Cell 1: torch.Size([256, 24, 50])
+Data after Normal Cell 2: torch.Size([256, 24, 50])
+Data after Reduction Cell 2: torch.Size([256, 48, 25])
+Data after Normal Cell 3: torch.Size([256, 48, 25])
+Size of x after cells: torch.Size([256, 48, 25])
+Size of x after gap: torch.Size([256, 48, 1])
+Size of dense input: 48
+1627839733.8782036
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 7, 200])
+Data after Normal Cell 0: torch.Size([256, 7, 200])
+Data after Reduction Cell 0: torch.Size([256, 14, 100])
+Data after Normal Cell 1: torch.Size([256, 14, 100])
+Data after Reduction Cell 1: torch.Size([256, 28, 50])
+Data after Normal Cell 2: torch.Size([256, 28, 50])
+Data after Reduction Cell 2: torch.Size([256, 56, 25])
+Data after Normal Cell 3: torch.Size([256, 56, 25])
+Size of x after cells: torch.Size([256, 56, 25])
+Size of x after gap: torch.Size([256, 56, 1])
+Size of dense input: 56
+1627839735.8355231
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 2, 200])
+Data after Normal Cell 0: torch.Size([256, 2, 200])
+Data after Reduction Cell 0: torch.Size([256, 4, 100])
+Data after Normal Cell 1: torch.Size([256, 4, 100])
+Data after Reduction Cell 1: torch.Size([256, 8, 50])
+Data after Normal Cell 2: torch.Size([256, 8, 50])
+Data after Reduction Cell 2: torch.Size([256, 16, 25])
+Data after Normal Cell 3: torch.Size([256, 16, 25])
+Size of x after cells: torch.Size([256, 16, 25])
+Size of x after gap: torch.Size([256, 16, 1])
+Size of dense input: 16
+1627839737.727721
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 4, 200])
+Data after Normal Cell 0: torch.Size([256, 4, 200])
+Data after Reduction Cell 0: torch.Size([256, 8, 100])
+Data after Normal Cell 1: torch.Size([256, 8, 100])
+Data after Reduction Cell 1: torch.Size([256, 16, 50])
+Data after Normal Cell 2: torch.Size([256, 16, 50])
+Data after Reduction Cell 2: torch.Size([256, 32, 25])
+Data after Normal Cell 3: torch.Size([256, 32, 25])
+Size of x after cells: torch.Size([256, 32, 25])
+Size of x after gap: torch.Size([256, 32, 1])
+Size of dense input: 32
+1627839739.6499817
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 1, 200])
+Data after Normal Cell 0: torch.Size([256, 1, 200])
+Data after Reduction Cell 0: torch.Size([256, 2, 100])
+Data after Normal Cell 1: torch.Size([256, 2, 100])
+Data after Reduction Cell 1: torch.Size([256, 4, 50])
+Data after Normal Cell 2: torch.Size([256, 4, 50])
+Data after Reduction Cell 2: torch.Size([256, 8, 25])
+Data after Normal Cell 3: torch.Size([256, 8, 25])
+Size of x after cells: torch.Size([256, 8, 25])
+Size of x after gap: torch.Size([256, 8, 1])
+Size of dense input: 8
+1627839741.4336138
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 7, 200])
+Data after Normal Cell 0: torch.Size([256, 7, 200])
+Data after Reduction Cell 0: torch.Size([256, 14, 100])
+Data after Normal Cell 1: torch.Size([256, 14, 100])
+Data after Reduction Cell 1: torch.Size([256, 28, 50])
+Data after Normal Cell 2: torch.Size([256, 28, 50])
+Data after Reduction Cell 2: torch.Size([256, 56, 25])
+Data after Normal Cell 3: torch.Size([256, 56, 25])
+Size of x after cells: torch.Size([256, 56, 25])
+Size of x after gap: torch.Size([256, 56, 1])
+Size of dense input: 56
+1627839743.4226115
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 1, 200])
+Data after Normal Cell 0: torch.Size([256, 1, 200])
+Data after Reduction Cell 0: torch.Size([256, 2, 100])
+Data after Normal Cell 1: torch.Size([256, 2, 100])
+Data after Reduction Cell 1: torch.Size([256, 4, 50])
+Data after Normal Cell 2: torch.Size([256, 4, 50])
+Data after Reduction Cell 2: torch.Size([256, 8, 25])
+Data after Normal Cell 3: torch.Size([256, 8, 25])
+Size of x after cells: torch.Size([256, 8, 25])
+Size of x after gap: torch.Size([256, 8, 1])
+Size of dense input: 8
+1627839745.3139043
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 1, 200])
+Data after Normal Cell 0: torch.Size([256, 1, 200])
+Data after Reduction Cell 0: torch.Size([256, 2, 100])
+Data after Normal Cell 1: torch.Size([256, 2, 100])
+Data after Reduction Cell 1: torch.Size([256, 4, 50])
+Data after Normal Cell 2: torch.Size([256, 4, 50])
+Data after Reduction Cell 2: torch.Size([256, 8, 25])
+Data after Normal Cell 3: torch.Size([256, 8, 25])
+Size of x after cells: torch.Size([256, 8, 25])
+Size of x after gap: torch.Size([256, 8, 1])
+Size of dense input: 8
+1627839746.993274
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 8, 200])
+Data after Normal Cell 0: torch.Size([256, 8, 200])
+Data after Reduction Cell 0: torch.Size([256, 16, 100])
+Data after Normal Cell 1: torch.Size([256, 16, 100])
+Data after Reduction Cell 1: torch.Size([256, 32, 50])
+Data after Normal Cell 2: torch.Size([256, 32, 50])
+Data after Reduction Cell 2: torch.Size([256, 64, 25])
+Data after Normal Cell 3: torch.Size([256, 64, 25])
+Size of x after cells: torch.Size([256, 64, 25])
+Size of x after gap: torch.Size([256, 64, 1])
+Size of dense input: 64
+1627839748.7484038
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 2, 200])
+Data after Normal Cell 0: torch.Size([256, 2, 200])
+Data after Reduction Cell 0: torch.Size([256, 4, 100])
+Data after Normal Cell 1: torch.Size([256, 4, 100])
+Data after Reduction Cell 1: torch.Size([256, 8, 50])
+Data after Normal Cell 2: torch.Size([256, 8, 50])
+Data after Reduction Cell 2: torch.Size([256, 16, 25])
+Data after Normal Cell 3: torch.Size([256, 16, 25])
+Size of x after cells: torch.Size([256, 16, 25])
+Size of x after gap: torch.Size([256, 16, 1])
+Size of dense input: 16
+1627839750.4401963
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 6, 200])
+Data after Normal Cell 0: torch.Size([256, 6, 200])
+Data after Reduction Cell 0: torch.Size([256, 12, 100])
+Data after Normal Cell 1: torch.Size([256, 12, 100])
+Data after Reduction Cell 1: torch.Size([256, 24, 50])
+Data after Normal Cell 2: torch.Size([256, 24, 50])
+Data after Reduction Cell 2: torch.Size([256, 48, 25])
+Data after Normal Cell 3: torch.Size([256, 48, 25])
+Size of x after cells: torch.Size([256, 48, 25])
+Size of x after gap: torch.Size([256, 48, 1])
+Size of dense input: 48
+1627839752.4128773
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 6, 200])
+Data after Normal Cell 0: torch.Size([256, 6, 200])
+Data after Reduction Cell 0: torch.Size([256, 12, 100])
+Data after Normal Cell 1: torch.Size([256, 12, 100])
+Data after Reduction Cell 1: torch.Size([256, 24, 50])
+Data after Normal Cell 2: torch.Size([256, 24, 50])
+Data after Reduction Cell 2: torch.Size([256, 48, 25])
+Data after Normal Cell 3: torch.Size([256, 48, 25])
+Size of x after cells: torch.Size([256, 48, 25])
+Size of x after gap: torch.Size([256, 48, 1])
+Size of dense input: 48
+1627839754.3129497
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 8, 200])
+Data after Normal Cell 0: torch.Size([256, 8, 200])
+Data after Reduction Cell 0: torch.Size([256, 16, 100])
+Data after Normal Cell 1: torch.Size([256, 16, 100])
+Data after Reduction Cell 1: torch.Size([256, 32, 50])
+Data after Normal Cell 2: torch.Size([256, 32, 50])
+Data after Reduction Cell 2: torch.Size([256, 64, 25])
+Data after Normal Cell 3: torch.Size([256, 64, 25])
+Size of x after cells: torch.Size([256, 64, 25])
+Size of x after gap: torch.Size([256, 64, 1])
+Size of dense input: 64
+1627839756.2740405
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 2, 200])
+Data after Normal Cell 0: torch.Size([256, 2, 200])
+Data after Reduction Cell 0: torch.Size([256, 4, 100])
+Data after Normal Cell 1: torch.Size([256, 4, 100])
+Data after Reduction Cell 1: torch.Size([256, 8, 50])
+Data after Normal Cell 2: torch.Size([256, 8, 50])
+Data after Reduction Cell 2: torch.Size([256, 16, 25])
+Data after Normal Cell 3: torch.Size([256, 16, 25])
+Size of x after cells: torch.Size([256, 16, 25])
+Size of x after gap: torch.Size([256, 16, 1])
+Size of dense input: 16
+1627839761.9354918
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 1, 200])
+Data after Normal Cell 0: torch.Size([256, 1, 200])
+Data after Reduction Cell 0: torch.Size([256, 2, 100])
+Data after Normal Cell 1: torch.Size([256, 2, 100])
+Data after Reduction Cell 1: torch.Size([256, 4, 50])
+Data after Normal Cell 2: torch.Size([256, 4, 50])
+Data after Reduction Cell 2: torch.Size([256, 8, 25])
+Data after Normal Cell 3: torch.Size([256, 8, 25])
+Size of x after cells: torch.Size([256, 8, 25])
+Size of x after gap: torch.Size([256, 8, 1])
+Size of dense input: 8
+1627839823.8955564
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 5, 200])
+Data after Normal Cell 0: torch.Size([256, 5, 200])
+Data after Reduction Cell 0: torch.Size([256, 10, 100])
+Data after Normal Cell 1: torch.Size([256, 10, 100])
+Data after Reduction Cell 1: torch.Size([256, 20, 50])
+Data after Normal Cell 2: torch.Size([256, 20, 50])
+Data after Reduction Cell 2: torch.Size([256, 40, 25])
+Data after Normal Cell 3: torch.Size([256, 40, 25])
+Size of x after cells: torch.Size([256, 40, 25])
+Size of x after gap: torch.Size([256, 40, 1])
+Size of dense input: 40
+1627839854.9777033
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 4, 200])
+Data after Normal Cell 0: torch.Size([256, 4, 200])
+Data after Reduction Cell 0: torch.Size([256, 8, 100])
+Data after Normal Cell 1: torch.Size([256, 8, 100])
+Data after Reduction Cell 1: torch.Size([256, 16, 50])
+Data after Normal Cell 2: torch.Size([256, 16, 50])
+Data after Reduction Cell 2: torch.Size([256, 32, 25])
+Data after Normal Cell 3: torch.Size([256, 32, 25])
+Size of x after cells: torch.Size([256, 32, 25])
+Size of x after gap: torch.Size([256, 32, 1])
+Size of dense input: 32
+1627839889.5125818
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 5, 200])
+Data after Normal Cell 0: torch.Size([256, 5, 200])
+Data after Reduction Cell 0: torch.Size([256, 10, 100])
+Data after Normal Cell 1: torch.Size([256, 10, 100])
+Data after Reduction Cell 1: torch.Size([256, 20, 50])
+Data after Normal Cell 2: torch.Size([256, 20, 50])
+Data after Reduction Cell 2: torch.Size([256, 40, 25])
+Data after Normal Cell 3: torch.Size([256, 40, 25])
+Size of x after cells: torch.Size([256, 40, 25])
+Size of x after gap: torch.Size([256, 40, 1])
+Size of dense input: 40
+1627839895.8681607
+Input Size: torch.Size([256, 52, 200])
+After in_conv: torch.Size([256, 30, 200])
+Data after Normal Cell 0: torch.Size([256, 30, 200])
+Data after Reduction Cell 0: torch.Size([256, 60, 100])
+Data after Normal Cell 1: torch.Size([256, 60, 100])
+Data after Reduction Cell 1: torch.Size([256, 120, 50])
+Data after Normal Cell 2: torch.Size([256, 120, 50])
+Data after Reduction Cell 2: torch.Size([256, 240, 25])
+Data after Normal Cell 3: torch.Size([256, 240, 25])
+Size of x after cells: torch.Size([256, 240, 25])
+Size of x after gap: torch.Size([256, 240, 1])
+Size of dense input: 240

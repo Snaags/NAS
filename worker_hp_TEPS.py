@@ -5,7 +5,7 @@ class MyWorker(Worker):
 
     def __init__(self, *args, sleep_interval=0, **kwargs):
         super().__init__(*args, **kwargs)
-
+        print("Init worker") 
         self.sleep_interval = sleep_interval
 
     def compute(self, config, budget, **kwargs):
@@ -22,7 +22,6 @@ class MyWorker(Worker):
                 'loss' (scalar)
                 'info' (dict)
         """
-
         res = train_function(config,int(budget))
 
         return({

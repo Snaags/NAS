@@ -62,7 +62,7 @@ for count,i in enumerate(range(num_iter)):
     for i in population:
         pop.append([i.get_dictionary(), train_dataset, test_dataset])
     
-    with Pool(processes = 2) as pool:
+    with Pool(processes = 1) as pool:
         results = pool.starmap(train_function, pop)
         pool.close()
         torch.cuda.empty_cache()

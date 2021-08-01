@@ -14,13 +14,13 @@ def init_config():
 
   cs = CS.ConfigurationSpace()
 
-  conv_ops = ["StdConv", "Conv3", "Conv5","Conv7","MaxPool5","AvgPool5","MaxPool7","AvgPool7","SepConv3","SepConv5","SepConv7"]
+  conv_ops = ["StdConv", "Conv3", "Conv5","Conv7","MaxPool5","AvgPool5","MaxPool7","AvgPool7","SepConv3","SepConv5","SepConv7", "Identity"]
   
   ops_parameters = [
         Parameter("type",               "Categorical", lower_or_constant_value = conv_ops ), 
         LTP_Parameter("input_1",               "Integer", 0,10),
         LTP_Parameter("input_2",               "Integer", 0,10)]
-  ops = Cumulative_Integer_Struct(cs,ops_parameters,"ops","num_ops","Integer",1,8)
+  ops = Cumulative_Integer_Struct(cs,ops_parameters,"ops","num_ops","Integer",1,9)
 
 
   conv_parameters = [
@@ -79,7 +79,7 @@ def init_config():
   lr =CSH.Constant(name = "lr",			value = 0.001)
   p =CSH.Constant(name = "p",			value = 0.05 )
   window_size = CSH.Constant(name = "window_size", value = 200)
-  channels = CSH.UniformIntegerHyperparameter(name = "channels", lower = 1 ,upper = 8)
+  channels = CSH.UniformIntegerHyperparameter(name = "channels", lower = 1 ,upper = 52)
   layers = CSH.Constant(name = "layers", value = 4)
     ###Topology Definition]###
 

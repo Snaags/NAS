@@ -24,11 +24,9 @@ class StdConv(nn.Module):
 class StdAdd(nn.Module):
   def __init__(self):
     super(StdAdd,self).__init__()
-    self.init_flag = False
-    self.operation = nn.Linear
   def forward(self, x1,x2):
     #Adds two 2d tensors together ((35,29), (30,35))
-    return torch.cat((x1,x2), dim = 2)
+    return torch.add(x1,x2)
 
 
 class AdaAvgPool(nn.Module):
@@ -40,6 +38,13 @@ class AdaAvgPool(nn.Module):
         return self.layer(x)
 
 
+class Identity(nn.Module):
+  def __init__(self):
+    super(Identity, self).__init__()
+    self.identity = nn.Identity()
+
+  def forward(self, x):
+    return self.identity(x)
 
 class StdDense(nn.Module):
   def __init__(self, in_size, out_size):

@@ -114,6 +114,7 @@ class Model(nn.Module):
       return self._forward_log(x)
     else:
       return self._forward(x)
+
 class Ops(nn.Module):
   def __init__(self, parameters, channels_in,channels_out, p):
     super(Ops,self).__init__()
@@ -123,7 +124,7 @@ class Ops(nn.Module):
     self.multicompute = False
     self.p = p
     self.input = []
-    self.dropout = nn.Dropout(p = 0.2)
+    #self.dropout = nn.Dropout(p = 0.2)
     for i in parameters:
       if i == "type":
         self.op = parameters[i]
@@ -216,6 +217,8 @@ class Ops(nn.Module):
       self.args["pool_type"] = "avg"
       self.args["kernel_size"] = 7
       self.args["padding"] = 3
+    elif op_key == "Identity":    
+      operation = ops.Identity
     elif op_key == "FactorizedReduce":
       operation = ops.FactorizedReduce
       self.args["C_in"] = self.channels_in 
@@ -235,11 +238,11 @@ class Ops(nn.Module):
         #print("Size Before operation: ", x.size())
         x = i(x)
         #print("Size After operation: ", x.size())
-    if self.multicompute:
-      x = self.pool(x)
+    #if self.multicompute:
+      #x = self.pool(x)
     return x 
   
-  def process( self, x : list):
+  def process( self, x : dict):
     return self.forward(itemgetter( *self.get_required() )( x ))  
 
 class Cell(nn.Module):
@@ -254,10 +257,11 @@ class Cell(nn.Module):
     self.channels_in = channels_in
     self.channels_out = channels_out
     self.inputs = []
-    self.output_operation = parameters["num_ops"]
+
     self.build_ops(parameters)
+    self.output_operation = max(self.ops_id) #parameters["num_ops"]
     self.compute_order = nn.ModuleList()
-    self.compute_order.extend(self.calculate_compute_order())
+    self.cal_compute_order()
   def _build_dict(self,parameters : dict, keyword : str):
     _dictionary = dict()
     keyword_length = len(keyword)
@@ -283,6 +287,34 @@ class Cell(nn.Module):
       
       self.ops.append(Ops(ops_dictionary[i], self.channels_in,self.channels_out, self.p))
       self.ops_id.append(i)
+  def cal_compute_order(self):
+    self.com_order_id_list = []
+
+    current_operation = self.output_operation 
+    self._compute_order(current_operation)
+    print("Initial Compute order: ", self.com_order_id_list)
+    ml = nn.ModuleList()
+    self.new_compute_order = []
+    for i in range(len(self.compute_order)-1,-1, -1):
+
+      if self.compute_order[i] not in ml:
+        self.new_compute_order.append(self.com_order_id_list[i])
+        ml.append(self.compute_order[i])
+    self.compute_order = ml
+
+
+
+  def _compute_order(self,operation):  
+      self.com_order_id_list.append(operation)
+      self.compute_order.append(self.ops[self.ops_id.index(operation)])
+
+      for i in self.ops[self.ops_id.index(operation)].get_required():
+        if i != 0:
+          self._compute_order(i)
+      return
+
+      
+
   def calculate_compute_order(self):
     #
     compute_order = []
@@ -300,9 +332,9 @@ class Cell(nn.Module):
     
     
   def forward(self, x):
-    outputs = [x]
-    for op in self.compute_order:
-      outputs.append(op.process(outputs))  
+    outputs = {0 : x}
+    for id,op in zip(self.new_compute_order,self.compute_order):
+      outputs[id] = op.process(outputs)
 
     return outputs[self.output_operation] 
 

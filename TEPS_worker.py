@@ -30,7 +30,7 @@ via random search using [KerasTuner](https://github.com/keras-team/keras-tuner).
 def getConfusionMatrix(model,testLoader,n_classes = 2 ,show_image=False):
   model.eval() #set the model to evaluation mode
   confusion_matrix=torch.zeros((n_classes , n_classes),dtype=int) #initialize a confusion matrix
-  
+    
   TP=FP=FN=TN = 0
   correct = 0
   incorrect = 0
@@ -42,7 +42,7 @@ def getConfusionMatrix(model,testLoader,n_classes = 2 ,show_image=False):
           outputs = model(inputs.float())
           preds = torch.argmax(outputs, 1).long()
           #get confusion matrix
-          if i == 150:
+          if i == 100:
             break
           for j in range(inputs.size()[0]):
               
@@ -95,8 +95,8 @@ def alloc_gpu():
     print("Chosen Device: ",gpu_mem_free.index(max(gpu_mem_free)))
     torch.cuda.set_device(gpu_mem_free.index(max(gpu_mem_free)))
 
-def main(hyperparameter,train_dataset, test_dataset,budget = 2000):
-    alloc_gpu() 
+def main(hyperparameter,train_dataset, test_dataset,budget = 1000):
+    print(hyperparameter)
     VISUAL_MODE = False
     def cal_acc(y,t):
         return np.count_nonzero(y==t)/len(y)
@@ -212,7 +212,7 @@ if __name__ == "__main__":
   "normal_cell_1_ops_2_type": 'StdConv',
   "normal_cell_1_ops_3_input_1": 1,
   "normal_cell_1_ops_3_input_2": 1,
-  "normal_cell_1_ops_3_type": 'AvgPool',
+  "normal_cell_1_ops_3_type": 'AvgPool5',
   "normal_cell_1_ops_4_input_1": 0,
   "normal_cell_1_ops_4_input_2": 2,
   "normal_cell_1_ops_4_type": 'Conv5',
@@ -230,6 +230,11 @@ if __name__ == "__main__":
   "reduction_cell_1_ops_1_input_2": 0,
   "reduction_cell_1_ops_1_type": 'FactorizedReduce',
   "window_size": 2000}
+  from datasets import Train_TEPS, Test_TEPS
+  train_dataset = Train_TEPS()
+
+  test_dataset = Test_TEPS()
+
   #hyperparameter = {'channels': 64, 'normal_cell_1_num_ops': 5, 'normal_cell_1_ops_1_input_1': 0, 'normal_cell_1_ops_1_input_2': 0, 'normal_cell_1_ops_1_type': 'Conv5', 'normal_cell_1_ops_2_input_1': 1, 'normal_cell_1_ops_2_input_2': 1, 'normal_cell_1_ops_2_type': 'StdConv', 'normal_cell_1_ops_3_input_1': 2, 'normal_cell_1_ops_3_input_2': 0, 'normal_cell_1_ops_3_type': 'AvgPool', 'normal_cell_1_ops_4_input_1': 2, 'normal_cell_1_ops_4_input_2': 2, 'normal_cell_1_ops_4_type': 'MaxPool', 'normal_cell_1_ops_5_input_1': 4, 'normal_cell_1_ops_5_input_2': 2, 'normal_cell_1_ops_5_type': 'StdConv', 'layers': 3, 'lr': 0.010326044660341144, 'num_conv': 1, 'num_re': 1, 'reduction_cell_1_num_ops': 1, 'reduction_cell_1_ops_1_input_1': 0, 'reduction_cell_1_ops_1_input_2': 0, 'reduction_cell_1_ops_1_type': 'FactorizedReduce', 'window_size': 525, "p": 0.2,"layers" : 3}
-  main(hyperparameter,2000 )
+  main(hyperparameter,train_dataset, test_dataset, 2000 )
 
