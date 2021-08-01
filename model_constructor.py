@@ -288,47 +288,36 @@ class Cell(nn.Module):
       self.ops.append(Ops(ops_dictionary[i], self.channels_in,self.channels_out, self.p))
       self.ops_id.append(i)
   def cal_compute_order(self):
-    self.com_order_id_list = []
+    #Calculate the order in which the operations in a cell should be computed
+    self.com_order_id_list = [] #Tracks the ID of the operations
 
     current_operation = self.output_operation 
     self._compute_order(current_operation)
-    print("Initial Compute order: ", self.com_order_id_list)
+    
     ml = nn.ModuleList()
     self.new_compute_order = []
     for i in range(len(self.compute_order)-1,-1, -1):
 
       if self.compute_order[i] not in ml:
-        self.new_compute_order.append(self.com_order_id_list[i])
+       
+        self.new_compute_order.append(self.com_order_id_list[i]) # The final operation order ID list
         ml.append(self.compute_order[i])
     self.compute_order = ml
 
 
 
-  def _compute_order(self,operation):  
+  def _compute_order(self,operation): 
+      #Appends an operation to the compute list and then traverses the prerequisite 
+      #operations recursively 
       self.com_order_id_list.append(operation)
       self.compute_order.append(self.ops[self.ops_id.index(operation)])
 
+
+      #Get the requirements compute inputs as long as the input is not zero
       for i in self.ops[self.ops_id.index(operation)].get_required():
         if i != 0:
           self._compute_order(i)
-      return
-
-      
-
-  def calculate_compute_order(self):
-    #
-    compute_order = []
-    #zero is the cell inputs, the first operation is op 1 
-    current_ops_done = [0]
-    
-    while len(compute_order) < len(self.ops):
-      for i in self.ops:
-          if set(i.get_required()).issubset(current_ops_done):
-            compute_order.append(i)
-            current_ops_done.append(self.ops_id[self.ops.index(i)])
-        
-    return compute_order
-      
+      return 
     
     
   def forward(self, x):
