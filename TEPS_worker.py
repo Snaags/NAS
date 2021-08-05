@@ -42,7 +42,7 @@ def getConfusionMatrix(model,testLoader,n_classes = 2 ,show_image=False):
           outputs = model(inputs.float())
           preds = torch.argmax(outputs, 1).long()
           #get confusion matrix
-          if i == 100:
+          if i == 200:
             break
           for j in range(inputs.size()[0]):
               
@@ -95,7 +95,7 @@ def alloc_gpu():
     print("Chosen Device: ",gpu_mem_free.index(max(gpu_mem_free)))
     torch.cuda.set_device(gpu_mem_free.index(max(gpu_mem_free)))
 
-def main(hyperparameter,train_dataset, test_dataset,budget = 1000):
+def main(hyperparameter,train_dataset, test_dataset,budget = 100000):
     print(hyperparameter)
     VISUAL_MODE = False
     def cal_acc(y,t):
@@ -133,7 +133,7 @@ def main(hyperparameter,train_dataset, test_dataset,budget = 1000):
     n_iter = train_dataset.get_n_samples()/batch_size
     if max_iter < n_iter:
       n_iter = max_iter
-    epochs = int(1)
+    epochs = int(10)
     optimizer = torch.optim.Adam(model.parameters(),lr = hyperparameter["lr"])
     criterion = nn.CrossEntropyLoss()
     acc = 0
@@ -168,14 +168,13 @@ def main(hyperparameter,train_dataset, test_dataset,budget = 1000):
           acc += cal_acc(convert_label_max_only(outputs), labels.cpu().detach().numpy())
           acc = acc/2
           h.log(i, loss = loss, accuracy = acc)
-            # Save the canvas
+          if i % 100 == 0:
+            c.draw_plot([h["loss"], h["accuracy"]])
+            c.save(os.path.join(OUTPUT_DIR,"%.2f" % acc +  "training_progress.png"))
+          # Save the canvas
           print("Epoch (",str(epoch),"/",str(epochs), ")""Iteration(s) (", str(i),"/",str(n_iter), ") Loss: ","%.2f" % loss.item(), "Accuracy: ","%.2f" % acc , end = '\r')
         if i >= max_iter:
           break
-    if VISUAL_MODE == True: 
-      c.draw_plot([h["loss"], h["accuracy"]])
-      c.save(os.path.join(OUTPUT_DIR,"%.2f" % acc +  "training_progress.png"))
-            # You can also save the history to a file to load and inspect layer
     h.save(os.path.join(OUTPUT_DIR, "%.2f" % acc + "training_progress.pkl"))
 
     """
@@ -183,7 +182,7 @@ def main(hyperparameter,train_dataset, test_dataset,budget = 1000):
     """
     print()
     acc , CM , TP, FP , FN , TN = getConfusionMatrix( model,test_dataloader ,  num_classes  ) 
-    if False: 
+    if True: 
       import seaborn as sns; sns.set_theme()
       fig = plt.figure(figsize = (25,15))
       fig = sns.heatmap(CM,annot=True,fmt='d',cmap="Blues", cbar_kws={'label': 'Samples'})
@@ -200,28 +199,35 @@ def main(hyperparameter,train_dataset, test_dataset,budget = 1000):
 
 
 if __name__ == "__main__":
-  hyperparameter = {"channels":  52,
+  hyperparameter = {
+  "channels": 36,
   "layers": 4,
-  "lr": 0.00016293069122740633,
-  "normal_cell_1_num_ops": 2,
-  "normal_cell_1_ops_1_input_1" : 0,
-  "normal_cell_1_ops_1_input_2" : 0,
-  "normal_cell_1_ops_1_type" : 'Conv3',
-  "normal_cell_1_ops_2_input_1": 1,
-  "normal_cell_1_ops_2_input_2": 1,
-  "normal_cell_1_ops_2_type": 'StdConv',
-  "normal_cell_1_ops_3_input_1": 1,
-  "normal_cell_1_ops_3_input_2": 1,
-  "normal_cell_1_ops_3_type": 'AvgPool5',
-  "normal_cell_1_ops_4_input_1": 0,
-  "normal_cell_1_ops_4_input_2": 2,
-  "normal_cell_1_ops_4_type": 'Conv5',
-  "normal_cell_1_ops_5_input_1": 1,
+  "lr": 0.001,
+  "normal_cell_1_num_ops": 1,
+  "normal_cell_1_ops_1_input_1": 0,
+  "normal_cell_1_ops_1_input_2": 0,
+  "normal_cell_1_ops_1_type": 'Conv7',
+  "normal_cell_1_ops_2_input_1": 0,
+  "normal_cell_1_ops_2_input_2": 0,
+  "normal_cell_1_ops_2_type": 'MaxPool5',
+  "normal_cell_1_ops_3_input_1": 0,
+  "normal_cell_1_ops_3_input_2": 0,
+  "normal_cell_1_ops_3_type": 'SepConv7',
+  "normal_cell_1_ops_4_input_1": 2,
+  "normal_cell_1_ops_4_input_2": 0,
+  "normal_cell_1_ops_4_type": 'AvgPool7',
+  "normal_cell_1_ops_5_input_1": 0,
   "normal_cell_1_ops_5_input_2": 3,
-  "normal_cell_1_ops_5_type": 'Conv3',
-  "normal_cell_1_ops_6_input_1": 2,
-  "normal_cell_1_ops_6_input_2": 2,
-  "normal_cell_1_ops_6_type": 'Conv5',
+  "normal_cell_1_ops_5_type": 'AvgPool7',
+  "normal_cell_1_ops_6_input_1": 1,
+  "normal_cell_1_ops_6_input_2": 0,
+  "normal_cell_1_ops_6_type": 'StdConv',
+  "normal_cell_1_ops_7_input_1": 1,
+  "normal_cell_1_ops_7_input_2": 3,
+  "normal_cell_1_ops_7_type": 'SepConv7',
+  "normal_cell_1_ops_8_input_1": 7,
+  "normal_cell_1_ops_8_input_2": 4,
+  "normal_cell_1_ops_8_type": 'StdConv',
   "num_conv": 1,
   "num_re": 1,
   "p": 0.05,
@@ -229,12 +235,15 @@ if __name__ == "__main__":
   "reduction_cell_1_ops_1_input_1": 0,
   "reduction_cell_1_ops_1_input_2": 0,
   "reduction_cell_1_ops_1_type": 'FactorizedReduce',
-  "window_size": 2000}
+  "window_size": 200
+  }
+
+
   from datasets import Train_TEPS, Test_TEPS
   train_dataset = Train_TEPS()
 
   test_dataset = Test_TEPS()
 
   #hyperparameter = {'channels': 64, 'normal_cell_1_num_ops': 5, 'normal_cell_1_ops_1_input_1': 0, 'normal_cell_1_ops_1_input_2': 0, 'normal_cell_1_ops_1_type': 'Conv5', 'normal_cell_1_ops_2_input_1': 1, 'normal_cell_1_ops_2_input_2': 1, 'normal_cell_1_ops_2_type': 'StdConv', 'normal_cell_1_ops_3_input_1': 2, 'normal_cell_1_ops_3_input_2': 0, 'normal_cell_1_ops_3_type': 'AvgPool', 'normal_cell_1_ops_4_input_1': 2, 'normal_cell_1_ops_4_input_2': 2, 'normal_cell_1_ops_4_type': 'MaxPool', 'normal_cell_1_ops_5_input_1': 4, 'normal_cell_1_ops_5_input_2': 2, 'normal_cell_1_ops_5_type': 'StdConv', 'layers': 3, 'lr': 0.010326044660341144, 'num_conv': 1, 'num_re': 1, 'reduction_cell_1_num_ops': 1, 'reduction_cell_1_ops_1_input_1': 0, 'reduction_cell_1_ops_1_input_2': 0, 'reduction_cell_1_ops_1_type': 'FactorizedReduce', 'window_size': 525, "p": 0.2,"layers" : 3}
-  main(hyperparameter,train_dataset, test_dataset, 2000 )
+  main(hyperparameter,train_dataset, test_dataset )
 
